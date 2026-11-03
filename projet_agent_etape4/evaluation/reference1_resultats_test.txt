@@ -1,6 +1,0 @@
-Jeu test : 75 besoins avec page source (les besoins non documentés, les calculs et les questions n'en ont pas)
-TOUS             75 besoins | bonne page parmi les 4 passages :  67 = 89 %
-couvert          35 besoins | bonne page parmi les 4 passages :  29 = 83 %
-partiel          15 besoins | bonne page parmi les 4 passages :  14 = 93 %
-hors_perimetre   22 besoins | bonne page parmi les 4 passages :  21 = 95 %
-vague             3 besoins | bonne page parmi les 4 passages :   3 = 100 %
