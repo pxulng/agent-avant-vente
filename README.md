@@ -28,3 +28,6 @@
 ## Limites · Limits
 
 Petits échantillons, juge IA indulgent sur l'exactitude, un seul relecteur humain, données synthétiques. Détails dans l'étude. · Small samples, an AI judge lenient on accuracy, one human reviewer, synthetic data. Details in the study.
+
+## Contrôle humain à l'aveugle · Blind human check
+Les fichiers de correspondance (fiche ↔ méthode) ne sont pas publiés, pour que le contrôle reste reproductible à l'aveugle. · The sheet-to-method mapping files are not published, so the blind check stays reproducible.
