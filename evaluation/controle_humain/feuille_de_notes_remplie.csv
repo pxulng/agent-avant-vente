@@ -1,0 +1,13 @@
+﻿fiche;exactitude;limites;sources;questions;utilite;Notes
+1;4;4;4;3;4;Fiche solide et exploitable. Les questions sont toutefois un peu trop nombreuses pour une demande tarifaire simple : commencer par le nombre d’utilisateurs et les fonctionnalités recherchées.
+2;4;4;4;3;4;Analyse globalement juste. Certaines questions, notamment autour du CPQ, élargissent inutilement le cadrage initial.
+3;2;4;4;4;4;Point bloquant : la création de devis hors connexion est classée « non_couvert », alors que la grille attend « partiel » (consultation seule hors connexion). Cela modifie sensiblement la réponse commerciale.
+4;4;4;4;3;4;Bonne distinction entre fonctionnalité non couverte et information non documentée. Quelques questions complémentaires pourraient être resserrées.
+5;4;4;4;4;3;Les limites des intégrations natives sont bien signalées. La recommandation gagnerait à être davantage reliée aux blocages identifiés et aux besoins prioritaires du prospect.
+6;4;4;4;4;4;Fiche très solide : réponse précise, limites explicites et cadrage pertinent. Pas de correction majeure à signaler.
+7;4;4;4;3;4;"Bonne identification des exigences non couvertes. Les questions sont un peu larges ; mieux vaut prioriser celles qui conditionnent réellement la faisabilité."
+8;2;3;4;4;3;Écart important sur la migration : la migration autonome est présentée comme « couverte », alors que la grille attend une couverture partielle limitée à une migration ponctuelle. Le statut de la synchronisation continue est, lui, correctement distingué.
+9;4;4;4;4;4;Fiche complète et bien cadrée. Les limites sont explicites et les questions permettent de qualifier le besoin.
+10;3;4;4;4;4;Le statut du besoin d’hébergement est indiqué « partiel » alors que la grille attend « couvert ». La réserve sur l’hébergement dans l’UE et l’absence de choix de région est néanmoins bien expliquée.
+11;4;4;4;4;4;Fiche très solide, avec une bonne prise en compte des limites et des conditions d’application.
+12;4;4;4;4;4;Fiche très solide et directement exploitable. Aucun écart majeur relevé au regard de la grille.

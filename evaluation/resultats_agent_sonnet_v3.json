@@ -1,0 +1,1552 @@
+[
+ {
+  "id": "T01",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Préparer des devis à partir de la liste de produits et services de l'entreprise",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devis se créent à partir du catalogue ou en lignes libres. Le catalogue contient des produits et services classés en catégories, avec des unités (pièce, heure, jour, forfait ou unité personnalisée). Il accepte un import CSV jusqu'à 5 000 références. Les grilles de prix par client ou segment sont réservées aux offres Équipe et Entreprise, mais le brief ne les demande pas.",
+     "sources": [
+      "DOC-02",
+      "DOC-03"
+     ]
+    },
+    {
+     "besoin": "Proposer des options (par exemple un adoucisseur) que le client accepte ou non",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devis acceptent des lignes optionnelles que le client peut cocher ou décocher. L'acceptation se fait en ligne par le client. La signature électronique simple est réservée aux offres Équipe et Entreprise, mais le brief ne la demande pas.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Transformer un devis accepté en facture",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La documentation décrit la transformation d'un devis accepté en facture en un clic. Elle ne réserve cette fonction à aucune offre. La numérotation est continue et les mentions légales françaises sont incluses.",
+     "sources": [
+      "DOC-06"
+     ]
+    },
+    {
+     "besoin": "Facturer un acompte à la commande",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La facturation partielle (acomptes et jalons) est documentée sans réserve d'offre. La documentation ne précise pas comment l'acompte est calculé (pourcentage ou montant), ni comment il est déduit de la facture finale.",
+     "sources": [
+      "DOC-06"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "Avec 8 utilisateurs, l'offre Essentiel (1 à 5 utilisateurs) est trop petite. L'offre Équipe (3 à 50 utilisateurs) convient. Prix : 8 × 39 € = 312 € HT par mois, avec engagement annuel, soit 3 744 € HT par an. Cela suppose que les 8 salariés ont tous besoin d'une licence, ce qui reste à confirmer.",
+   "questions_clarification": [
+    "Les 8 salariés ont-ils tous besoin d'un accès, ou seulement les commerciaux et la personne chargée de la facturation ?",
+    "Comment l'acompte est-il fixé (pourcentage ou montant) et comment doit-il apparaître sur la facture finale ?",
+    "Avez-vous des besoins de signature électronique ou de relance des factures impayées ? Ces deux fonctions sont réservées à l'offre Équipe ou supérieure.",
+    "Avez-vous une obligation de transmission des factures via une plateforme agréée ? Elle n'est pas disponible aujourd'hui."
+   ],
+   "esquisse_solution": "Les commerciaux créent leurs devis depuis le catalogue importé en CSV. Ils y ajoutent des lignes optionnelles, comme l'adoucisseur, que le client coche ou décoche à l'acceptation en ligne. Le devis accepté est transformé en facture en un clic. Une facture d'acompte est émise à la commande, puis le solde est facturé. Reste à confirmer le détail du calcul et de la déduction de l'acompte.",
+   "risques": [
+    "Le mode de calcul de l'acompte et sa déduction sur la facture finale ne sont pas détaillés dans la documentation.",
+    "La transmission via une plateforme de dématérialisation agréée n'est pas disponible, et la documentation ne donne aucune date. Seul le format Factur-X est généré.",
+    "Avec 8 utilisateurs, l'offre Essentiel (5 utilisateurs maximum) ne suffit pas."
+   ]
+  }
+ },
+ {
+  "id": "T02",
+  "json_valide": true,
+  "nb_appels_outils": 7,
+  "outils": [
+   "check_integration",
+   "check_integration",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits",
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Retrouver les échanges de mails Gmail dans les fiches clients",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Brevaro s'intègre en natif à Google Workspace (Gmail, Google Agenda), avec synchronisation dans les deux sens des e-mails et des rendez-vous. La documentation ne limite pas cette intégration à certaines offres. L'historique des activités des fiches entreprise et contact affiche les e-mails synchronisés.",
+     "sources": [
+      "DOC-08",
+      "DOC-05"
+     ]
+    },
+    {
+     "besoin": "Être prévenu sur Slack dès qu'un devis est accepté",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'intégration Slack est native et envoie des notifications d'événements, dont « devis accepté » et « nouvelle opportunité ». La documentation ne la limite pas à certaines offres. Elle ne fait que notifier : il n'y a pas d'échange bidirectionnel.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Envoyer automatiquement une relance quand un devis reste sans réponse",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les automatisations de relance existent. Parmi leurs déclencheurs, on trouve devis envoyé, ouvert, accepté ou expiré, et date précise. Parmi leurs actions, on trouve « envoyer un e-mail à partir d'un modèle » et « créer une tâche ». Le nombre d'automatisations actives dépend de l'offre : 5 en Essentiel, 25 en Équipe, illimité en Entreprise. Ces limites ne rendent pas la fonction partielle. Les relances automatiques de factures impayées sont un sujet distinct, réservé aux offres Équipe et Entreprise.",
+     "sources": [
+      "DOC-07",
+      "DOC-01",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "12 utilisateurs × 39 € = 468 € HT par mois, avec engagement annuel, soit 5 616 € HT par an. L'offre Essentiel est limitée à 5 utilisateurs et ne convient donc pas à 12 personnes. L'offre Entreprise n'est proposée qu'à partir de 20 utilisateurs.",
+   "questions_clarification": [
+    "Au bout de combien de jours sans réponse la relance doit-elle partir ? Faut-il plusieurs relances successives ?",
+    "La relance doit-elle partir depuis la boîte Gmail de chaque commercial ou depuis Brevaro ?"
+   ],
+   "esquisse_solution": "Connecter Google Workspace pour synchroniser les mails de l'équipe avec les fiches clients. Activer la notification Slack sur l'événement « devis accepté ». Créer une automatisation de relance qui envoie un e-mail à partir d'un modèle quand un devis envoyé reste sans réponse. À confirmer auprès de l'éditeur : la manière exacte de déclencher la relance après un délai sans réponse. La documentation liste les déclencheurs « devis envoyé, ouvert, expiré » et « date précise », mais elle ne décrit pas de délai relatif explicite.",
+   "risques": [
+    "La documentation ne décrit pas de déclencheur « X jours après l'envoi sans réponse ». Il faut vérifier que le scénario de relance du client est réalisable (déclencheur « date précise » ou « devis expiré »).",
+    "Slack ne reçoit que des notifications d'événements. Le client ne pourra pas agir sur les devis depuis Slack.",
+    "L'envoi d'e-mails en masse (marketing automation) n'est pas couvert. Cela n'est pas un obstacle pour des relances de devis individuelles.",
+    "Engagement annuel obligatoire. Équipe accepte de 3 à 50 utilisateurs, ce qui laisse de la marge si l'agence grandit."
+   ]
+  }
+ },
+ {
+  "id": "T03",
+  "json_valide": true,
+  "nb_appels_outils": 4,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Générer des devis en espagnol",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devis peuvent être générés en français, en anglais et en espagnol. La documentation ne réserve cette fonction à aucune offre.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Chiffrer les devis en livres sterling et en euros",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devises prises en charge sont l'euro (EUR), le dollar américain (USD) et la livre sterling (GBP). Les taux de change sont saisis manuellement, et non mis à jour automatiquement. La documentation ne réserve cette fonction à aucune offre.",
+     "sources": [
+      "DOC-03"
+     ]
+    },
+    {
+     "besoin": "Charger un catalogue d'environ 2 000 références depuis un fichier CSV",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'import CSV du catalogue accepte jusqu'à 5 000 références, donc 2 000 références passent sans problème. L'assistant de configuration permet aussi d'importer le catalogue. La documentation ne réserve cette fonction à aucune offre.",
+     "sources": [
+      "DOC-03",
+      "DOC-13"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "25 utilisateurs × 39 € HT par mois = 975 € HT par mois, avec engagement annuel, soit 11 700 € HT par an. L'offre Essentiel est limitée à 1 à 5 utilisateurs, donc elle ne convient pas pour 25 personnes. L'offre Équipe accepte 3 à 50 utilisateurs. L'offre Entreprise (à partir de 20 utilisateurs) est sur devis, et son prix n'est pas connu.",
+   "questions_clarification": [
+    "Les 25 personnes auront-elles toutes besoin d'un accès ? Cela change le nombre de licences.",
+    "Une saisie manuelle des taux de change GBP/EUR vous convient-elle ?",
+    "Avez-vous besoin de TVA ou de mentions particulières pour le Royaume-Uni (hors Union européenne) ? La documentation ne le précise pas.",
+    "Les fiches produit (désignations, descriptions) doivent-elles aussi être en espagnol ? Le CSV ne documente pas de colonnes multilingues."
+   ],
+   "esquisse_solution": "Brevaro permet de générer les devis en espagnol et de les chiffrer en EUR ou en GBP. Le catalogue d'environ 2 000 références s'importe en CSV, bien en dessous de la limite de 5 000. L'offre Équipe couvre 25 utilisateurs. À confirmer : la gestion de la TVA ou des mentions pour le Royaume-Uni, et la traduction des libellés produits.",
+   "risques": [
+    "Les taux de change sont saisis manuellement. Il faut les mettre à jour régulièrement, sinon les devis en GBP peuvent être faux.",
+    "La documentation ne dit pas si les libellés du catalogue peuvent être multilingues. Les devis en espagnol pourraient afficher des désignations en français.",
+    "Les taux de TVA documentés sont les taux français et ceux de l'Union européenne. Le cas du Royaume-Uni n'est pas documenté.",
+    "Le support est assuré en français et en anglais uniquement, pas en espagnol."
+   ]
+  }
+ },
+ {
+  "id": "T04",
+  "json_valide": false,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": null,
+  "brut": "{\"besoins\":[{\"besoin\":\"Conserver les différentes versions d'un devis\",\"statut\":\"couvert\",\"offre_minimale\":null,\"explication\":\"La documentation indique un historique des révisions, avec jusqu'à 20 versions conservées par devis. Cette limite de 20 versions est à confronter au nombre de modifications que le cabinet fait réellement. Le brief ne donne aucun chiffre sur ce point.\",\"sources\":[\"DOC-02\"]},{\"besoin\":\"Faire des remises ligne par ligne et sur le total du devis\",\"statut\":\"couvert\",\"offre_minimale\":null,\"explication\":\"La documentation prévoit des remises par ligne et globales, en pourcentage ou en montant. Elle ne réserve cette fonction à aucune offre.\",\"sources\":[\"DOC-02\"]},{\"besoin\":\"Savoir où les données sont hébergées\",\"statut\":\"couvert\",\"offre_minimale\":null,\"explication\":\"Les données sont hébergées dans l'Union européenne chez un fournisseur cloud. Le client ne peut choisir ni le pays ni la région. Elles sont chiffrées en transit (TLS 1.2 ou supérieur) et au repos (AES-256). Les sauvegardes sont quotidiennes et conservées 30 jours. La restauration se fait sur demande auprès du support, pas en libre-service.\",\"sources\":[\"DOC-10\"]},{\"besoin\":\"Disposer de la double authentification\",\"statut\":\"couvert\",\"offre_minimale\":null,\"explication\":\"La double authentification, par application d'authentification, est disponible sur toutes les offres. Le SSO SAML est réservé à l'offre Entreprise, mais le brief ne le demande pas.\",\"sources\":[\"DOC-10\"]}],\"offre_recommandee\":\"Essentiel\",\"calcul_prix\":\"6 consultants dépassent la limite de 5 utilisateurs de l'offre Essentiel (1 à 5). L'offre Équipe (3 à 50 utilisateurs) est donc nécessaire : 6 × 39 € = 234 € HT par mois, soit 2 808 € HT par an, avec engagement annuel.\",\"questions_clarification\":[\"Combien de versions d'un même devis faites-vous en général ? La limite est de 20 versions conservées.\",\"Vos clients demandent-ils une localisation précise des données (pays ou région) ? Le client ne peut pas la choisir.\",\"Avez-vous besoin d'une validation interne des remises ? Elle existe en une seule étape, à partir de l'offre Équipe.\"],\"esquisse_solution\":\"Les devis seraient créés dans Brevaro, avec des remises par ligne et globales. Chaque révision serait conservée dans l'historique, dans la limite de 20 versions. Pour les questions de sécurité des clients, on peut indiquer un hébergement dans l'UE, un chiffrement en transit et au repos, des sauvegardes quotidiennes et la double authentification. Il reste à confirmer que la limite de 20 versions convient et que l'absence de choix de région est acceptable pour les clients.\",\"risques\":[\"Le champ offre_recommandee ci-dessus doit se lire « Équipe » : l'offre Essentiel est limitée à 5 utilisateurs et le cabinet en compte 6.\",\"La limite de 20 versions par devis peut être atteinte si les propositions sont très souvent révisées.\",\"Le choix du pays ou de la région d'hébergement n'est pas possible, ce qui peut poser problème à des clients exigeants sur la localisation.\",\"La restauration des sauvegardes passe par le support et n'est pas en libre-service.\"]}\n\nUne correction : l'offre recommandée est **Équipe**, pas Essentiel. J'ai écrit « Essentiel » dans le champ `offre_recommandee` par erreur, alors que le calcul et les risques indiquent bien Équipe."
+ },
+ {
+  "id": "T05",
+  "json_valide": false,
+  "nb_appels_outils": 0,
+  "outils": [],
+  "limite_atteinte": false,
+  "fiche": null,
+  "brut": ""
+ },
+ {
+  "id": "T06",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Consulter les fiches clients depuis un téléphone ou une tablette, chez le client",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Des applications iOS et Android, utilisables aussi sur tablette, permettent de consulter et de modifier les fiches, les opportunités, les notes et les tâches. La documentation ne réserve cette fonction à aucune offre.",
+     "sources": [
+      "DOC-15"
+     ]
+    },
+    {
+     "besoin": "Créer des devis sur place depuis un mobile ou une tablette",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les applications mobiles permettent de créer et d'envoyer des devis. La création peut se faire à partir du catalogue ou en lignes libres, avec des modèles de devis réutilisables. Le quota de devis par mois (100 en Essentiel, illimité en Équipe et Entreprise) dépend de l'offre, mais ne limite pas la fonction elle-même.",
+     "sources": [
+      "DOC-15",
+      "DOC-02",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Savoir si les données sont chiffrées",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les données sont chiffrées en transit (TLS 1.2 ou supérieur) et au repos (AES-256). L'hébergement est dans l'Union européenne, mais le client ne choisit pas le pays ni la région. Brevaro n'est pas certifié ISO 27001 ni SOC 2 et n'a pas la qualification SecNumCloud. Un accord de sous-traitance RGPD (DPA) est disponible sur demande.",
+     "sources": [
+      "DOC-10"
+     ]
+    },
+    {
+     "besoin": "Obtenir un accompagnement à la mise en place",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Un pack d'accompagnement payant de 2 jours (configuration et formation en visioconférence) coûte 2 400 € HT. Il est disponible sur toutes les offres. Des webinaires de formation collectifs et gratuits ont lieu chaque semaine. Un assistant de configuration permet une mise en route autonome. La formation sur site n'est pas proposée. La migration assistée par Brevaro est réservée à l'offre Entreprise, sur devis.",
+     "sources": [
+      "DOC-13"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "18 utilisateurs × 39 € = 702 € HT par mois, soit 8 424 € HT par an (engagement annuel). L'offre Essentiel est limitée à 5 utilisateurs et ne convient donc pas. L'offre Entreprise, à partir de 20 utilisateurs, n'est pas accessible avec 18 utilisateurs. En option, le pack d'accompagnement coûte 2 400 € HT, soit 10 824 € HT la première année.",
+   "questions_clarification": [
+    "Les 18 salariés doivent-ils tous avoir un compte, ou seulement les 10 commerciaux ? Avec 10 comptes seulement, le calcul serait de 390 € HT par mois.",
+    "Les commerciaux ont-ils besoin de faire signer le devis sur l'écran du client ? Cette fonction n'existe qu'à partir de l'offre Équipe.",
+    "Les commerciaux travaillent-ils parfois sans connexion internet chez les clients ?"
+   ],
+   "esquisse_solution": "Brevaro équiperait les commerciaux des applications iOS ou Android, sur téléphone ou tablette. Ils consulteraient les fiches et créeraient et enverraient les devis sur place, à partir du catalogue et de modèles. L'offre Équipe couvre 18 utilisateurs. Les données sont chiffrées en transit et au repos. Pour la mise en place, le client peut choisir entre l'assistant autonome, les webinaires gratuits et le pack payant de 2 jours en visioconférence. Reste à confirmer le périmètre d'utilisateurs, ainsi que le besoin éventuel de signature sur place ou de fonctionnement hors ligne.",
+   "risques": [
+    "Le fonctionnement hors connexion des applications mobiles n'est pas documenté. C'est à confirmer auprès de l'éditeur si les commerciaux interviennent dans des zones à faible couverture réseau.",
+    "Brevaro n'a ni certification ISO 27001 ni SOC 2. Cela peut poser problème si le client a des exigences de conformité.",
+    "La formation sur site n'est pas proposée, seulement en visioconférence.",
+    "Le prix est facturé par utilisateur avec engagement annuel."
+   ]
+  }
+ },
+ {
+  "id": "T07",
+  "json_valide": true,
+  "nb_appels_outils": 6,
+  "outils": [
+   "check_integration",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Synchroniser les mails et les rendez-vous avec Outlook",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Microsoft 365 (Outlook et Calendrier) est une intégration native. Elle synchronise les e-mails et les rendez-vous dans les deux sens. La documentation ne la restreint à aucune offre.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Garder l'historique des révisions de chaque devis, avec parfois environ 15 versions par projet",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'historique des révisions conserve jusqu'à 20 versions par devis. Les 15 versions du cabinet restent donc sous cette limite, avec une marge de 5. La documentation ne réserve cette fonction à aucune offre.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Facturer par acomptes selon l'avancement des chantiers",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La facturation partielle (acomptes et jalons) est prévue. Un devis accepté peut aussi être transformé en facture en un clic. La documentation ne réserve cette fonction à aucune offre. Elle ne dit pas si les acomptes peuvent être rattachés à un pourcentage d'avancement de chantier. Seule la notion de jalons est documentée.",
+     "sources": [
+      "DOC-06"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "10 utilisateurs × 39 € HT par mois = 390 € HT par mois, soit 4 680 € HT par an (engagement annuel). L'offre Essentiel est limitée à 5 utilisateurs, donc elle ne convient pas à 10 personnes. L'offre Équipe accepte de 3 à 50 utilisateurs. Aucune remise sur volume n'est publiée.",
+   "questions_clarification": [
+    "Les acomptes sont-ils calculés en pourcentage du devis, ou associés à des jalons définis à l'avance ?",
+    "Le cabinet utilise-t-il bien Microsoft 365 (Outlook en ligne), et pas une version installée localement ?",
+    "Le cabinet a-t-il des données à reprendre d'un outil existant ?"
+   ],
+   "esquisse_solution": "Le cabinet utiliserait l'offre Équipe pour 10 utilisateurs. Outlook et Calendrier seraient synchronisés nativement dans les deux sens. Chaque devis conserverait jusqu'à 20 versions. Un devis accepté serait facturé par acomptes ou jalons au fil des chantiers. Il reste à confirmer que le fonctionnement des jalons correspond au suivi d'avancement des chantiers du cabinet.",
+   "risques": [
+    "La limite de 20 versions par devis laisse peu de marge si certains projets dépassent 15 révisions.",
+    "La documentation ne détaille pas le calcul des acomptes selon l'avancement. À valider avec l'éditeur.",
+    "L'offre Équipe n'inclut pas de migration de données assistée par les équipes de Brevaro. Elle propose un pack d'accompagnement de 2 jours à 2 400 € HT, en option."
+   ]
+  }
+ },
+ {
+  "id": "T08",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Remises en pourcentage ou en montant, par ligne et sur le total du devis",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique des remises par ligne et globales, en pourcentage ou en montant, sans réserve d'offre.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Établir des devis en livres sterling pour certains clients",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La livre sterling (GBP) est prise en charge, avec l'EUR et l'USD. Les taux de change sont saisis manuellement, ce qui est à signaler au client. Aucune réserve d'offre.",
+     "sources": [
+      "DOC-03"
+     ]
+    },
+    {
+     "besoin": "Double authentification pour la DSI",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Double authentification par application d'authentification, disponible sur toutes les offres. Le SSO SAML est réservé à l'offre Entreprise, mais le brief ne le demande pas.",
+     "sources": [
+      "DOC-10"
+     ]
+    },
+    {
+     "besoin": "Hébergement dans l'Union européenne",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'hébergement se fait dans l'Union européenne, chez un fournisseur cloud. Le client ne peut choisir ni le pays ni la région.",
+     "sources": [
+      "DOC-10"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "Équipe : 39 € HT par utilisateur et par mois, avec engagement annuel. Pour 40 utilisateurs : 40 × 39 = 1 560 € HT par mois, soit 18 720 € HT par an. L'offre Essentiel est limitée à 5 utilisateurs et ne convient donc pas. L'offre Entreprise (à partir de 20 utilisateurs) est sur devis, et rien dans le brief ne la rend nécessaire.",
+   "questions_clarification": [
+    "Combien de devis par mois ? Ils sont illimités avec Équipe, alors qu'Essentiel est limité à 100 par mois.",
+    "La DSI a-t-elle d'autres exigences, comme le SSO, un journal d'audit ou le choix du pays d'hébergement ? Le SSO et le journal d'audit sont réservés à l'offre Entreprise, et le choix du pays n'est pas possible."
+   ],
+   "esquisse_solution": "Brevaro couvre les quatre besoins exprimés : remises par ligne et globales, devis en GBP, double authentification et hébergement dans l'UE. L'offre Équipe convient pour 40 utilisateurs. À confirmer : les taux de change GBP saisis à la main sont-ils acceptables ? La DSI se contente-t-elle d'un hébergement UE sans choix de région ?",
+   "risques": [
+    "Taux de change saisis manuellement : risque d'écart ou d'oubli de mise à jour.",
+    "Le choix du pays ou de la région d'hébergement n'est pas possible : à vérifier avec la DSI.",
+    "Si la DSI exige un SSO ou un journal d'audit, il faudra passer à l'offre Entreprise, dont le prix est sur devis."
+   ]
+  }
+ },
+ {
+  "id": "T09",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "check_integration",
+   "check_integration",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Importer les contacts depuis un CSV sans créer de doublons",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'import CSV ou Excel existe. Les doublons sont détectés à l'import, et la fusion se fait manuellement. La documentation ne dit pas si la détection bloque la création ou si elle signale seulement les doublons pour que l'utilisateur les traite. Le critère de détection n'est pas précisé non plus.",
+     "sources": [
+      "DOC-05"
+     ]
+    },
+    {
+     "besoin": "Synchroniser Gmail avec Brevaro",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'intégration Google Workspace (Gmail et Agenda) est native. Elle synchronise les e-mails et les rendez-vous dans les deux sens. La documentation ne la restreint à aucune offre.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Recevoir des notifications Slack pour les nouvelles opportunités",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'intégration Slack est native. Elle envoie des notifications d'événements, dont la nouvelle opportunité, et ne fait rien d'autre. La documentation ne la restreint à aucune offre.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Relancer automatiquement les devis expirés",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devis ont une date de validité avec expiration automatique. Les automatisations de relance disposent d'un déclencheur « devis expiré ». Le nombre d'automatisations actives dépend de l'offre : 5 en Essentiel, 25 en Équipe. Les extraits consultés ne détaillent pas les actions possibles, par exemple l'envoi d'un e-mail de relance.",
+     "sources": [
+      "DOC-02",
+      "DOC-07",
+      "DOC-01",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "15 utilisateurs × 39 € = 585 € HT par mois, soit 7 020 € HT par an (engagement annuel). L'offre Essentiel est limitée à 5 utilisateurs et ne convient donc pas à 15 personnes. L'offre Entreprise n'est proposée qu'à partir de 20 utilisateurs.",
+   "questions_clarification": [
+    "Les relances de devis expirés doivent-elles partir par e-mail depuis Gmail, ou sous une autre forme ? Les actions disponibles sont à confirmer.",
+    "Combien de contacts contient le CSV, et quel critère définit un doublon (e-mail, nom, entreprise) ?"
+   ],
+   "esquisse_solution": "Importer le CSV de contacts avec l'assistant de configuration, qui détecte les doublons, puis fusionner à la main ceux qui restent. Activer la synchronisation Gmail native et les notifications Slack sur les nouvelles opportunités. Créer une automatisation avec le déclencheur « devis expiré » pour les relances. Sur l'offre Équipe, les 15 utilisateurs sont couverts, avec 25 automatisations actives. À confirmer : l'action exacte de relance, et le traitement des doublons à l'import.",
+   "risques": [
+    "La fusion des doublons est manuelle. Un fichier volumineux ou mal nettoyé peut demander du travail après l'import.",
+    "Slack ne reçoit que des notifications d'événements. Il n'y a pas d'interaction depuis Slack.",
+    "L'offre Essentiel plafonne à 5 utilisateurs, donc 15 personnes impliquent l'offre Équipe."
+   ]
+  }
+ },
+ {
+  "id": "T10",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Construire les devis à partir d'un catalogue de prestations",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Les devis se créent à partir du catalogue ou en lignes libres. Il existe des modèles de devis, des remises et des lignes optionnelles. Le catalogue peut être importé via l'assistant de configuration. Aucune réserve d'offre n'est mentionnée. Pour l'Essentiel, les devis sont limités à 100 par mois (Équipe et Entreprise : illimité).",
+     "sources": [
+      "DOC-02",
+      "DOC-01",
+      "DOC-13"
+     ]
+    },
+    {
+     "besoin": "Émettre des factures au format Factur-X",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que Brevaro génère les factures au format Factur-X (PDF avec données XML), sans réserve d'offre. La transmission via une plateforme de dématérialisation partenaire agréée n'est pas disponible à ce jour, et aucune date n'est donnée. Le brief ne demande que le format, mais l'avant-vente doit vérifier que cela suffit au client.",
+     "sources": [
+      "DOC-06"
+     ]
+    },
+    {
+     "besoin": "Application mobile pour les chargés de compte",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Il existe des applications iOS et Android, utilisables aussi sur tablette. Elles permettent de consulter et modifier les fiches, opportunités, notes et tâches, de créer et envoyer des devis, et envoient des notifications push. Le mode hors connexion se limite à la lecture seule des fiches ouvertes récemment, sans création ni modification. La signature sur l'écran du client en rendez-vous demande l'offre Équipe ou Entreprise, mais le brief ne la demande pas.",
+     "sources": [
+      "DOC-15",
+      "DOC-01"
+     ]
+    },
+    {
+     "besoin": "Pack de formation pour toute l'équipe (20 personnes)",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Un pack d'accompagnement payant de 2 jours (configuration et formation en visioconférence) coûte 2 400 € HT, sur toutes les offres. Des webinaires de formation collectifs gratuits ont lieu chaque semaine. La formation sur site n'est pas proposée. La documentation ne précise pas combien de participants le pack accepte, ni s'il couvre les 20 personnes.",
+     "sources": [
+      "DOC-13"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "20 utilisateurs × 39 € = 780 € HT/mois, soit 9 360 € HT/an avec engagement annuel. Pack d'accompagnement de 2 jours : 2 400 € HT, à régler une seule fois. Total première année : 11 760 € HT. L'offre Essentiel est limitée à 5 utilisateurs et ne convient donc pas. L'offre Entreprise (à partir de 20 utilisateurs, sur devis) reste possible, mais le brief n'exprime pas de besoin qui l'exige.",
+   "questions_clarification": [
+    "Les factures doivent-elles aussi être transmises via une plateforme de dématérialisation partenaire agréée ? Cette transmission n'est pas disponible à ce jour.",
+    "Les chargés de compte ont-ils besoin de travailler hors connexion avec création ou modification de données ? Le mode hors connexion est en lecture seule.",
+    "Souhaitez-vous la signature électronique sur tablette en rendez-vous ? Elle demande l'offre Équipe ou supérieure.",
+    "La formation en visioconférence convient-elle ? La formation sur site n'est pas proposée."
+   ],
+   "esquisse_solution": "Brevaro Équipe pour 20 utilisateurs. Le catalogue de prestations alimente les devis, avec modèles, remises et lignes optionnelles. Les factures sont générées au format Factur-X. Les chargés de compte utilisent l'application iOS/Android pour créer et envoyer des devis en déplacement. Le pack de 2 jours de configuration et formation en visioconférence, complété par les webinaires hebdomadaires gratuits, couvre la formation. À confirmer : la capacité du pack pour 20 personnes, et le besoin éventuel de transmission via une plateforme agréée.",
+   "risques": [
+    "La transmission des factures via une plateforme agréée n'est pas disponible, sans date annoncée. Cela peut bloquer le client si ses obligations de facturation électronique l'exigent.",
+    "Le mode hors connexion de l'application mobile est en lecture seule, ce qui peut gêner des chargés de compte souvent en déplacement.",
+    "Le nombre de participants au pack de formation n'est pas documenté, et la formation sur site n'existe pas.",
+    "L'offre Entreprise est possible à partir de 20 utilisateurs, mais son prix est sur devis et n'est pas chiffré ici."
+   ]
+  }
+ },
+ {
+  "id": "T11",
+  "json_valide": true,
+  "nb_appels_outils": 3,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Faire signer les devis en ligne par les clients",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Le client peut accepter le devis en ligne. La signature électronique simple (case à cocher, horodatage, adresse IP) est réservée aux offres Équipe et Entreprise. Elle n'est pas disponible en Essentiel. La signature avancée ou qualifiée n'est pas proposée, ce qui compte si le client a besoin d'une valeur probante renforcée.",
+     "sources": [
+      "DOC-02",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Envoyer aux clients un lien pour payer par carte bancaire",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Le lien de paiement par carte bancaire passe par un prestataire de paiement partenaire. Il est réservé aux offres Équipe et Entreprise. Le prélèvement SEPA n'est pas proposé.",
+     "sources": [
+      "DOC-06"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "4 utilisateurs × 39 € = 156 € HT par mois, avec engagement annuel (soit 1 872 € HT par an). Équipe accepte de 3 à 50 utilisateurs, donc 4 utilisateurs sont possibles.",
+   "questions_clarification": [
+    "Une signature électronique simple suffit-elle (pas de signature avancée ni qualifiée) ?",
+    "Quel prestataire de paiement partenaire est utilisé, et quels frais de transaction s'appliquent ? La documentation ne le précise pas."
+   ],
+   "esquisse_solution": "Avec l'offre Équipe, l'équipe envoie le devis par e-mail avec un lien de consultation. Le client l'accepte et le signe en ligne (signature simple). Après facturation, un lien de paiement par carte bancaire lui est envoyé via le prestataire partenaire. À confirmer : le niveau de signature requis, et les frais et conditions du prestataire de paiement.",
+   "risques": [
+    "La signature avancée ou qualifiée n'est pas proposée. Si le client en a besoin, ce n'est pas couvert.",
+    "Les frais du prestataire de paiement ne figurent pas dans la documentation et ne sont pas inclus dans le prix calculé.",
+    "Le prix est hors taxes et suppose un engagement annuel."
+   ]
+  }
+ },
+ {
+  "id": "T12",
+  "json_valide": true,
+  "nb_appels_outils": 3,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Authentification unique SAML avec l'annuaire de l'entreprise (exigence DSI)",
+     "statut": "partiel",
+     "offre_minimale": "Entreprise",
+     "explication": "Le SSO SAML est réservé à l'offre Entreprise. Il n'est pas disponible en Essentiel ni en Équipe. La documentation ne précise pas quels annuaires ou fournisseurs d'identité sont compatibles. Le provisionnement automatique des utilisateurs (SCIM) n'est pas disponible. Les comptes devront donc être créés ou gérés sans SCIM.",
+     "sources": [
+      "DOC-10",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Journal d'audit de toutes les actions",
+     "statut": "partiel",
+     "offre_minimale": "Entreprise",
+     "explication": "Le journal d'audit des actions est réservé à l'offre Entreprise. Il est conservé 12 mois. La documentation ne détaille pas le périmètre exact des actions tracées, et elle ne dit pas si « toutes » les actions y figurent. Elle ne mentionne pas non plus d'export du journal.",
+     "sources": [
+      "DOC-10",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Entreprise",
+   "calcul_prix": "60 utilisateurs correspondent à la plage de l'offre Entreprise (à partir de 20 utilisateurs). L'offre Équipe est limitée à 50 utilisateurs et n'inclut ni SSO ni journal d'audit. Le prix Entreprise est « sur devis », donc je ne peux pas calculer de total. Il faut un devis pour 60 utilisateurs (prix HT, par utilisateur et par mois, engagement annuel).",
+   "questions_clarification": [
+    "Quel est l'annuaire ou le fournisseur d'identité de la DSI (Entra ID, Okta, autre) ? Sa compatibilité SAML est à confirmer auprès de l'éditeur.",
+    "Que doit couvrir le journal d'audit : lecture, modification, suppression, connexions ? Quelle durée de conservation faut-il ? La conservation est de 12 mois.",
+    "La DSI exige-t-elle le provisionnement automatique des comptes (SCIM) ? Il n'est pas disponible."
+   ],
+   "esquisse_solution": "L'offre Entreprise répond aux deux exigences de la DSI : SSO SAML et journal d'audit conservé 12 mois. Elle accepte 60 utilisateurs. Il reste à confirmer la compatibilité avec l'annuaire du client, le périmètre exact des actions journalisées et le tarif sur devis.",
+   "risques": [
+    "Pas de SCIM : la gestion des arrivées et départs d'utilisateurs reste manuelle.",
+    "Le journal d'audit est conservé 12 mois. Cela peut être insuffisant si la DSI a une exigence de rétention plus longue.",
+    "Le périmètre « toutes les actions » n'est pas détaillé dans la documentation.",
+    "Le prix Entreprise n'est pas public, donc le budget n'est pas chiffrable pour l'instant."
+   ]
+  }
+ },
+ {
+  "id": "T13",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "get_plan_limits",
+   "check_integration",
+   "search_docs",
+   "search_docs",
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Connecter Brevaro à Zapier",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Zapier se connecte via l'API et les webhooks, et seulement avec les offres Équipe et Entreprise. L'offre Essentiel n'y donne pas accès. Les appels API passés par Zapier comptent probablement dans le quota quotidien de l'API. Ce point n'est pas précisé dans la documentation et reste à confirmer.",
+     "sources": [
+      "DOC-08",
+      "DOC-09",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Connecter Brevaro au site web du client (via l'API)",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Brevaro propose une API REST en JSON, avec une spécification OpenAPI publique. L'authentification se fait par clé d'API ou OAuth 2.0. Les objets disponibles sont les contacts, entreprises, opportunités, devis, factures et produits. L'API n'est pas accessible avec Essentiel. Elle est limitée à 1 000 appels par jour avec Équipe et à 20 000 avec Entreprise. La documentation ne décrit pas de connecteur dédié pour un site web : l'intégration passerait par l'API, et par les webhooks (Équipe et Entreprise). Le bac à sable de test n'existe qu'avec Entreprise.",
+     "sources": [
+      "DOC-09",
+      "DOC-12",
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Supporter environ 3 000 appels d'API par jour",
+     "statut": "partiel",
+     "offre_minimale": "Entreprise",
+     "explication": "3 000 appels par jour dépassent le quota d'Équipe (1 000) et rentrent dans celui d'Entreprise (20 000). Seule l'offre Entreprise convient donc pour ce volume.",
+     "sources": [
+      "DOC-09",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Entreprise",
+   "calcul_prix": "Entreprise : prix sur devis, aucun tarif publié. À titre de comparaison, Équipe coûterait 15 × 39 € = 585 € HT par mois avec engagement annuel (7 020 € HT par an), mais son quota de 1 000 appels par jour est insuffisant. L'offre Entreprise est annoncée « à partir de 20 utilisateurs », alors que le client en a 15. Le prix ne peut donc pas être calculé.",
+   "questions_clarification": [
+    "L'offre Entreprise est-elle possible pour 15 utilisateurs ? Faut-il facturer 20 licences au minimum ?",
+    "Que doit faire exactement l'intégration avec le site web (création de contacts, de devis, synchronisation de produits, etc.) ?",
+    "Les 3 000 appels par jour incluent-ils ceux de Zapier, et quel est le pic de charge ?",
+    "Le client peut-il réduire son volume sous 1 000 appels par jour, par exemple avec des webhooks ou en regroupant les appels, pour rester sur Équipe ?"
+   ],
+   "esquisse_solution": "Le site web serait relié à Brevaro par l'API REST, et Zapier par l'API et les webhooks. Le volume de 3 000 appels par jour exige l'offre Entreprise, dont le quota est de 20 000. Il reste à confirmer le seuil de 20 utilisateurs minimum, le tarif sur devis, et la manière dont les appels de Zapier sont comptés dans le quota.",
+   "risques": [
+    "Le client a 15 utilisateurs et l'offre Entreprise est annoncée à partir de 20. La documentation ne dit pas si une dérogation est possible.",
+    "Avec Équipe, le quota de 1 000 appels par jour serait dépassé trois fois.",
+    "Le comportement en cas de dépassement du quota n'est pas documenté.",
+    "Aucun connecteur natif pour site web n'est documenté, donc un développement sur l'API sera nécessaire."
+   ]
+  }
+ },
+ {
+  "id": "T14",
+  "json_valide": true,
+  "nb_appels_outils": 4,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Trois pipelines séparés, un par gamme de produits",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Le nombre de pipelines est de 1 sur Essentiel, 3 sur Équipe et 10 sur Entreprise. Les 3 pipelines demandés sont donc possibles à partir de l'offre Équipe. Chaque pipeline a jusqu'à 12 étapes personnalisables. Les documents consultés ne disent rien sur une restriction d'accès par équipe ou par pipeline.",
+     "sources": [
+      "DOC-04",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Répartir automatiquement les nouvelles opportunités entre commerciaux",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "L'attribution automatique se fait par répartition à tour de rôle. Elle est réservée aux offres Équipe et Entreprise. La documentation ne mentionne pas d'autre règle de répartition, par exemple par gamme, par zone ou selon la charge de travail.",
+     "sources": [
+      "DOC-04"
+     ]
+    },
+    {
+     "besoin": "Environ huit rapports personnalisés",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "L'offre Équipe permet 10 rapports personnalisés, ce qui couvre les 8 demandés. L'offre Entreprise en propose un nombre illimité. L'offre Essentiel n'en propose aucun. Les 6 tableaux de bord prédéfinis sont disponibles sur toutes les offres. Les rapports peuvent être exportés en CSV et Excel.",
+     "sources": [
+      "DOC-04"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "20 utilisateurs × 39 € HT par mois = 780 € HT par mois, soit 9 360 € HT par an (engagement annuel). L'offre Équipe accepte de 3 à 50 utilisateurs.",
+   "questions_clarification": [
+    "La répartition à tour de rôle suffit-elle, ou faut-il répartir par gamme de produits ou par équipe ?",
+    "Chaque équipe doit-elle voir uniquement son pipeline ? Les droits d'accès par pipeline ne sont pas documentés dans les passages consultés.",
+    "Le besoin en rapports personnalisés risque-t-il de dépasser 10 à terme ?"
+   ],
+   "esquisse_solution": "L'offre Équipe répond aux trois besoins énoncés : 3 pipelines (un par gamme), attribution automatique à tour de rôle et jusqu'à 10 rapports personnalisés. Il reste à confirmer que la répartition à tour de rôle convient. Il faut aussi confirmer comment les équipes sont séparées d'un pipeline à l'autre, ce que la documentation consultée ne précise pas.",
+   "risques": [
+    "La répartition à tour de rôle ne tient pas compte de la gamme ni de l'équipe. Elle pourrait attribuer une opportunité à un commercial d'une autre gamme si elle s'applique à tous les commerciaux.",
+    "L'offre Équipe est limitée à 3 pipelines et 10 rapports personnalisés. Une quatrième gamme ou plus de 10 rapports obligerait à passer à l'offre Entreprise, vendue sur devis.",
+    "Les droits d'accès par pipeline ne sont pas documentés."
+   ]
+  }
+ },
+ {
+  "id": "T15",
+  "json_valide": true,
+  "nb_appels_outils": 3,
+  "outils": [
+   "check_integration",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Garder HubSpot synchronisé avec Brevaro pendant six mois de transition",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Pour HubSpot, la documentation ne prévoit qu'une migration ponctuelle par import CSV guidé. Il n'y a pas de synchronisation continue. La documentation ne cite aucune solution de contournement pour la synchronisation. Il faudrait donc soit faire tourner les deux outils en parallèle sans synchronisation, soit demander à l'éditeur si une solution existe.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Migrer les données HubSpot vers Brevaro en autonomie (import ponctuel)",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "La migration depuis HubSpot se fait par import CSV guidé, une seule fois. La documentation ne la réserve à aucune offre. L'assistant de configuration importe les contacts, le catalogue et les modèles de devis. L'import CSV ou Excel détecte les doublons et permet une fusion manuelle.",
+     "sources": [
+      "DOC-08",
+      "DOC-05",
+      "DOC-13"
+     ]
+    },
+    {
+     "besoin": "Que les équipes de Brevaro migrent les données à la place du client",
+     "statut": "partiel",
+     "offre_minimale": "Entreprise",
+     "explication": "La migration assistée par les équipes de Brevaro est réservée à l'offre Entreprise, sur devis. Cette offre commence à 20 utilisateurs, et le client en a 12. Son éligibilité est donc à confirmer. Un pack d'accompagnement payant de 2 jours (configuration et formation) coûte 2 400 € HT sur toutes les offres. La documentation ne dit pas qu'il inclut la migration.",
+     "sources": [
+      "DOC-13",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "Équipe : 12 utilisateurs × 39 € × 12 mois = 5 616 € HT par an (engagement annuel). L'offre Essentiel est limitée à 5 utilisateurs. L'offre Entreprise commence à 20 utilisateurs et se facture sur devis. En option, le pack d'accompagnement de 2 jours coûte 2 400 € HT.",
+   "questions_clarification": [
+    "Quels objets HubSpot faut-il migrer (contacts, entreprises, affaires, historique) ? La documentation ne détaille que les contacts, le catalogue et les modèles de devis pour l'assistant de configuration.",
+    "Une période de double saisie ou de double usage sans synchronisation est-elle acceptable pendant la transition ?",
+    "La migration assistée est-elle indispensable, sachant qu'elle est réservée à l'offre Entreprise ?"
+   ],
+   "esquisse_solution": "Le client prendrait l'offre Équipe pour 12 utilisateurs. Il ferait un import CSV guidé depuis HubSpot, une seule fois, au moment choisi. Il n'y aurait pas de synchronisation continue pendant six mois. Il faut confirmer avec l'éditeur si la migration assistée est possible pour 12 utilisateurs, et si une solution existe pour garder les deux outils à jour pendant la transition.",
+   "risques": [
+    "Pendant six mois, les données divergeront entre HubSpot et Brevaro, sans synchronisation documentée.",
+    "L'import étant ponctuel, les données saisies dans HubSpot après l'import ne seront pas reprises automatiquement.",
+    "La migration assistée n'est documentée que pour l'offre Entreprise, qui commence à 20 utilisateurs."
+   ]
+  }
+ },
+ {
+  "id": "T16",
+  "json_valide": true,
+  "nb_appels_outils": 2,
+  "outils": [
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Relances automatiques des factures impayées",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "La documentation indique des relances automatiques à 3 niveaux, réservées aux offres Équipe et Entreprise. L'offre Essentiel n'en comprend pas. Le déclencheur « facture en retard » existe dans les automatisations (DOC-07).",
+     "sources": [
+      "DOC-06",
+      "DOC-12",
+      "DOC-07"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "Équipe : 39 € HT par utilisateur et par mois, avec engagement annuel. Pour 2 utilisateurs, 2 × 39 = 78 € HT/mois, soit 936 € HT/an. Cependant, la documentation indique « 3 à 50 » utilisateurs pour Équipe. Si un minimum de 3 utilisateurs est facturé, le calcul devient 3 × 39 = 117 € HT/mois, soit 1 404 € HT/an. Ce point reste à confirmer.",
+   "questions_clarification": [
+    "L'offre Équipe est-elle bien accessible à 2 utilisateurs, ou y a-t-il un minimum de 3 utilisateurs facturés ?",
+    "Les 3 niveaux de relance sont-ils suffisants pour votre process (délais, contenu des messages) ?"
+   ],
+   "esquisse_solution": "Brevaro Équipe permet de facturer et de relancer automatiquement les impayés, avec 3 niveaux de relance. Les deux associés auraient chacun un accès. Il reste à confirmer le minimum d'utilisateurs de l'offre Équipe et le paramétrage des relances.",
+   "risques": [
+    "Le minimum de 3 utilisateurs de l'offre Équipe pourrait augmenter le coût par rapport à 2 licences.",
+    "L'offre Essentiel (19 €) ne comprend pas les relances, donc elle ne répond pas au besoin.",
+    "Le prélèvement SEPA n'est pas proposé. Ce point n'est pertinent que si vous comptez l'utiliser pour le recouvrement."
+   ]
+  }
+ },
+ {
+  "id": "T17",
+  "json_valide": true,
+  "nb_appels_outils": 3,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Créer des devis hors connexion (terrain, souvent sans réseau)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Le mode hors connexion des applications mobiles se limite à la consultation en lecture seule des fiches ouvertes récemment. La création et la modification sans connexion ne sont pas possibles. La documentation ne donne aucune solution de contournement. Les devis se créent et s'envoient avec une connexion.",
+     "sources": [
+      "DOC-15"
+     ]
+    },
+    {
+     "besoin": "Faire signer le client sur l'écran du commercial pendant le rendez-vous",
+     "statut": "partiel",
+     "offre_minimale": "Équipe",
+     "explication": "Les applications iOS et Android, y compris sur tablette, proposent la signature électronique sur l'écran du client en rendez-vous. Cette fonction est réservée aux offres Équipe et Entreprise. La signature est simple (case à cocher, horodatage, adresse IP). La signature avancée ou qualifiée n'est pas proposée. La documentation ne dit pas si cette signature fonctionne sans réseau. Comme la création de devis hors connexion est impossible, il faut compter sur une connexion au moment du rendez-vous.",
+     "sources": [
+      "DOC-15",
+      "DOC-02",
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "10 utilisateurs × 39 € = 390 € HT par mois, soit 4 680 € HT par an (engagement annuel). L'offre Essentiel est exclue : elle est limitée à 5 utilisateurs et n'inclut pas la signature. Les devis sont illimités avec Équipe.",
+   "questions_clarification": [
+    "Les commerciaux peuvent-ils préparer les devis avant le rendez-vous, avec une connexion, puis les présenter hors ligne ? La documentation permet seulement de consulter les fiches ouvertes récemment.",
+    "Une signature électronique simple (case à cocher, horodatage, adresse IP) suffit-elle pour vos devis ?",
+    "Les commerciaux ont-ils au moins un réseau mobile ponctuel pendant les rendez-vous, ou bien aucun réseau du tout ?"
+   ],
+   "esquisse_solution": "Avec l'offre Équipe, les commerciaux utilisent l'application mobile sur tablette ou smartphone. Ils peuvent créer et envoyer des devis, puis faire signer le client sur leur écran. Le besoin de création hors connexion n'est pas couvert : seule la consultation en lecture seule des fiches récentes l'est. À confirmer auprès de l'éditeur : le comportement de la signature sans réseau, et tout fonctionnement hors ligne qui ne figure pas dans la documentation.",
+   "risques": [
+    "Le besoin principal (créer des devis sans réseau) n'est pas couvert. Cela peut être bloquant pour des commerciaux souvent sans réseau.",
+    "On ne sait pas si la signature sur écran fonctionne hors connexion. Il faut le confirmer avant de promettre quoi que ce soit.",
+    "La signature simple n'a pas le niveau d'une signature avancée ou qualifiée, ce qui peut poser problème pour certains contrats."
+   ]
+  }
+ },
+ {
+  "id": "T18",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "get_plan_limits",
+   "search_docs",
+   "get_plan_limits",
+   "get_plan_limits",
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Connaître le budget annuel pour 45 utilisateurs sur l'offre Équipe",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "L'offre Équipe coûte 39 € HT par utilisateur et par mois, avec engagement annuel. Elle accepte de 3 à 50 utilisateurs, donc 45 utilisateurs entrent dans la limite.",
+     "sources": [
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Obtenir une remise commerciale sur le tarif",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation ne publie aucune remise sur volume. Elle indique qu'une remise « se discute pour l'offre Entreprise ». Rien n'est prévu pour l'offre Équipe. Il ne faut pas promettre de remise. Ne pas confondre avec les remises sur les devis du client (DOC-02), qui sont une autre fonction.",
+     "sources": [
+      "DOC-12"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "45 utilisateurs × 39 € × 12 mois = 21 060 € HT par an (1 755 € HT par mois), sans remise. Ce montant ne comprend pas le pack d'accompagnement optionnel de 2 jours à 2 400 € HT.",
+   "questions_clarification": [
+    "Le nombre d'utilisateurs va-t-il dépasser 50 à court terme ? L'offre Entreprise démarre à 20 utilisateurs et est sur devis, avec une remise discutable.",
+    "Quels besoins précis (SSO, journal d'audit, SLA, volume d'API) pourraient justifier l'offre Entreprise ?"
+   ],
+   "esquisse_solution": "Pour 45 utilisateurs, l'offre Équipe revient à 21 060 € HT par an, à 39 € par utilisateur et par mois avec engagement annuel. Aucune remise n'est publiée pour cette offre. L'avant-vente doit vérifier avec l'éditeur si un geste commercial existe. Seule l'offre Entreprise est documentée comme ouverte à la discussion sur une remise de volume.",
+   "risques": [
+    "Ne pas promettre de remise sur l'offre Équipe : la documentation n'en publie aucune.",
+    "L'offre Équipe est limitée à 50 utilisateurs. La marge de croissance est de 5 utilisateurs.",
+    "Le prix est hors taxes et suppose un engagement annuel.",
+    "Si le client a besoin de SSO, d'un journal d'audit ou d'un SLA contractuel, l'offre Équipe ne les inclut pas."
+   ]
+  }
+ },
+ {
+  "id": "T19",
+  "json_valide": false,
+  "nb_appels_outils": 3,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": null,
+  "brut": ""
+ },
+ {
+  "id": "T20",
+  "json_valide": true,
+  "nb_appels_outils": 2,
+  "outils": [
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Transmettre les factures électroniques via une plateforme de dématérialisation agréée dès l'an prochain",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que la transmission via une plateforme partenaire agréée n'est pas disponible à ce jour. Elle ne donne aucune date, donc on ne peut pas dire si Brevaro sera prêt l'an prochain. Aucune solution de contournement n'est documentée pour la transmission.",
+     "sources": [
+      "DOC-06"
+     ]
+    },
+    {
+     "besoin": "Générer des factures électroniques dans un format structuré",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Brevaro génère les factures au format Factur-X (PDF avec données XML). La documentation ne réserve cette fonction à aucune offre. Elle ne dit pas si ce format suffit pour votre obligation réglementaire.",
+     "sources": [
+      "DOC-06"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Combien d'utilisateurs devront accéder à Brevaro ?",
+    "Pouvez-vous utiliser une plateforme agréée de votre côté, en dehors de Brevaro, pour la transmission des factures Factur-X ?",
+    "À quelle date exacte votre obligation d'émission entre-t-elle en vigueur ?"
+   ],
+   "esquisse_solution": "Brevaro peut générer des factures Factur-X. La transmission via une plateforme agréée n'est pas disponible aujourd'hui et aucune date n'est documentée. Il ne faut donc pas promettre de date au client. Il faut demander à l'éditeur si une échéance est prévue, sans présenter cette réponse comme acquise. Il faut aussi vérifier si Factur-X suffit pour l'obligation du client.",
+   "risques": [
+    "Le client a une échéance réglementaire, mais Brevaro n'a pas de date documentée pour la transmission via une plateforme agréée.",
+    "Si la transmission est obligatoire dès l'an prochain, Brevaro seul ne répondrait pas à ce besoin aujourd'hui.",
+    "Aucune information sur l'immatriculation ou la certification de Brevaro comme plateforme ou partenaire agréé."
+   ]
+  }
+ },
+ {
+  "id": "T21",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Gérer les taxes à la vente américaines (sales tax)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que les taxes à la vente américaines ne sont pas gérées. Brevaro gère la TVA française et celle de l'Union européenne, avec autoliquidation intracommunautaire. Aucun contournement n'est documenté.",
+     "sources": [
+      "DOC-03"
+     ]
+    },
+    {
+     "besoin": "Faire des devis en francs suisses (CHF)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Les devises prises en charge sont l'euro, le dollar américain et la livre sterling. Les autres devises ne sont pas prises en charge, donc le franc suisse ne l'est pas. Les devis en USD sont possibles pour le marché américain.",
+     "sources": [
+      "DOC-03"
+     ]
+    },
+    {
+     "besoin": "Faire des devis en allemand",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Les devis peuvent être générés en français, en anglais et en espagnol. Les autres langues ne sont pas prises en charge, donc l'allemand ne l'est pas. L'anglais pourrait servir de solution de repli, à valider avec le client.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Taux de change mis à jour automatiquement",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Les taux de change sont saisis manuellement. La documentation ne mentionne aucune mise à jour automatique. Je n'ai trouvé aucun contournement documenté, par exemple par API.",
+     "sources": [
+      "DOC-03"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": "Pas de recommandation d'offre : aucun des quatre besoins n'est couvert. Pour information, 30 utilisateurs dépassent la limite de 5 de l'offre Essentiel. Les offres Équipe (3 à 50 utilisateurs, 39 €/utilisateur/mois HT, engagement annuel) et Entreprise (à partir de 20 utilisateurs, sur devis) sont donc les seules compatibles. Équipe coûterait 30 × 39 € = 1 170 €/mois HT, soit 14 040 €/an HT. Ce chiffre est indicatif et ne vaut pas recommandation.",
+   "questions_clarification": [
+    "Les devis en USD et en EUR suffiraient-ils pour les trois marchés, ou le franc suisse est-il indispensable ?",
+    "Des devis en anglais seraient-ils acceptables pour les clients allemands ?",
+    "Pouvez-vous continuer à calculer la sales tax américaine en dehors de Brevaro ?",
+    "Une saisie manuelle des taux de change vous conviendrait-elle ?",
+    "Quel est le volume de devis par mois, et quelles autres fonctions sont nécessaires (signature, API, etc.) ?"
+   ],
+   "esquisse_solution": "Brevaro ne répond à aucun des quatre besoins exprimés. Il pourrait servir de base pour les devis en EUR, USD ou GBP, en français, en anglais ou en espagnol, avec la TVA UE. Le client devrait alors gérer la sales tax, le franc suisse, l'allemand et la mise à jour des taux hors de l'outil. Il faut d'abord vérifier si cette solution partielle lui suffit.",
+   "risques": [
+    "Les quatre besoins clés (sales tax, CHF, allemand, taux automatiques) sont non couverts : risque élevé d'inadéquation.",
+    "Les devis aux clients suisses et allemands ne pourraient être ni en CHF ni en allemand.",
+    "Les mentions légales de facturation sont françaises (DOC-06) : leur adéquation pour les États-Unis, la Suisse et l'Allemagne n'est pas documentée.",
+    "La saisie manuelle des taux de change peut entraîner des écarts ou des oublis."
+   ]
+  }
+ },
+ {
+  "id": "T22",
+  "json_valide": true,
+  "nb_appels_outils": 6,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits",
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Hébergement certifié pour les données de santé (HDS)",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "La documentation ne mentionne pas la certification HDS. Elle indique seulement un hébergement dans l'Union européenne chez un fournisseur cloud, avec chiffrement en transit (TLS 1.2 ou supérieur) et au repos (AES-256). Il faut demander à l'éditeur si Brevaro ou son hébergeur est certifié HDS. Ne pas présenter ce point comme disponible.",
+     "sources": [
+      "DOC-10"
+     ]
+    },
+    {
+     "besoin": "Certification ISO 27001",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que Brevaro n'est pas certifié ISO 27001 à ce jour (ni SOC 2). Elle ne propose pas de solution de contournement.",
+     "sources": [
+      "DOC-10"
+     ]
+    },
+    {
+     "besoin": "Hébergement garanti en France",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "L'hébergement se fait dans l'Union européenne, et le client ne peut choisir ni le pays ni la région. Un hébergement garanti en France n'est donc pas proposé.",
+     "sources": [
+      "DOC-10"
+     ]
+    },
+    {
+     "besoin": "Qualification SecNumCloud (souhaitée)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique « Qualification SecNumCloud : non ».",
+     "sources": [
+      "DOC-10"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Quel usage la clinique ferait-elle de Brevaro ? Des données de santé de patients y seraient-elles saisies, ou seulement des données commerciales (fournisseurs, partenaires) ?",
+    "Les exigences HDS, ISO 27001 et hébergement en France sont-elles éliminatoires, ou une solution sans ces certifications est-elle envisageable ?",
+    "Combien d'utilisateurs Brevaro seraient concernés sur les 90 salariés ?"
+   ],
+   "esquisse_solution": "Sur la base de la documentation, Brevaro ne répond pas aux exigences d'hébergement et de certification exprimées. L'ISO 27001, l'hébergement en France et SecNumCloud sont explicitement exclus. La certification HDS n'est pas documentée et reste à confirmer auprès de l'éditeur. Je ne recommande donc ni offre ni prix. Si ces exigences sont éliminatoires, Brevaro n'est probablement pas adapté. Si la clinique n'y saisirait aucune donnée de santé, un cadrage de l'usage est nécessaire avant de poursuivre.",
+   "risques": [
+    "Risque de non-conformité réglementaire si des données de santé sont saisies dans Brevaro sans hébergeur HDS confirmé.",
+    "L'hébergement UE sans choix du pays ou de la région est incompatible avec une exigence de localisation en France.",
+    "Les sauvegardes sont conservées 30 jours, et la restauration passe par le support, sans libre-service. Ce point peut compter pour une clinique."
+   ]
+  }
+ },
+ {
+  "id": "T23",
+  "json_valide": true,
+  "nb_appels_outils": 5,
+  "outils": [
+   "check_integration",
+   "check_integration",
+   "check_integration",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Connecteur natif avec SAP",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique qu'il n'existe aucun connecteur SAP. Le client ou un intégrateur peut passer par l'API. L'API n'est pas accessible sur Essentiel. Elle permet 1 000 appels par jour sur Équipe et 20 000 sur Entreprise.",
+     "sources": [
+      "DOC-08",
+      "DOC-09"
+     ]
+    },
+    {
+     "besoin": "Connecteur natif avec Salesforce",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique qu'il n'existe aucun connecteur Salesforce. Le contournement est l'API, réalisée par le client ou un intégrateur. Les quotas sont les mêmes que pour SAP : aucun accès sur Essentiel, 1 000 appels par jour sur Équipe, 20 000 sur Entreprise.",
+     "sources": [
+      "DOC-08",
+      "DOC-09"
+     ]
+    },
+    {
+     "besoin": "Notifications dans Microsoft Teams",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que les notifications Teams ne sont pas disponibles. Aucun contournement n'est documenté dans les passages consultés.",
+     "sources": [
+      "DOC-08"
+     ]
+    },
+    {
+     "besoin": "Connecteur avec le logiciel de comptabilité du client",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Il n'existe aucun connecteur direct avec un logiciel de comptabilité. Le contournement documenté est l'export CSV des factures et des paiements. L'API est une autre piste, à confirmer. Le logiciel de comptabilité du client n'est pas nommé dans le brief.",
+     "sources": [
+      "DOC-06",
+      "DOC-08",
+      "DOC-01"
+     ]
+    }
+   ],
+   "offre_recommandee": "Équipe",
+   "calcul_prix": "50 utilisateurs × 39 € HT par mois = 1 950 € HT par mois, soit 23 400 € HT par an (engagement annuel). Essentiel est exclu : il est limité à 5 utilisateurs et n'a pas d'accès API. Équipe couvre 3 à 50 utilisateurs, donc exactement 50. Entreprise (à partir de 20 utilisateurs, sur devis) serait à envisager si le volume d'API dépasse 1 000 appels par jour.",
+   "questions_clarification": [
+    "Quel logiciel de comptabilité utilisez-vous ?",
+    "Quelles données doivent circuler entre Brevaro, SAP et Salesforce, dans quel sens, et à quelle fréquence ?",
+    "Disposez-vous d'un intégrateur ou d'une équipe interne pour développer les intégrations via l'API ?",
+    "Quel volume d'appels API par jour estimez-vous ? Le quota est de 1 000 sur Équipe.",
+    "Un export CSV vers la comptabilité vous suffirait-il ?",
+    "Comptez-vous rester à 50 utilisateurs ? Équipe est plafonnée à 50."
+   ],
+   "esquisse_solution": "Brevaro n'offre aucun des quatre connecteurs ou notifications demandés : SAP, Salesforce, Teams et comptabilité. Pour la comptabilité, l'export CSV des factures et paiements est possible. Pour SAP et Salesforce, la seule piste documentée est un développement via l'API, sur Équipe ou Entreprise, avec les limites de quota. Pour Teams, aucune solution n'est documentée. L'avant-vente doit confirmer avec le client que ces contournements suffisent. Il doit aussi vérifier la faisabilité technique et le volume d'API.",
+   "risques": [
+    "Le besoin de « connecteurs natifs » est incompatible avec l'offre actuelle : risque de décalage d'attentes.",
+    "Le quota API de 1 000 appels par jour sur Équipe peut être insuffisant pour une synchronisation continue avec SAP et Salesforce pour 50 utilisateurs.",
+    "Les intégrations par API demandent un développement à la charge du client ou d'un intégrateur, dont le coût n'est pas chiffré ici.",
+    "Il n'y a aucune alternative documentée pour les notifications Teams.",
+    "50 utilisateurs correspondent au plafond de l'offre Équipe : toute croissance implique de passer à Entreprise, sur devis."
+   ]
+  }
+ },
+ {
+  "id": "T24",
+  "json_valide": true,
+  "nb_appels_outils": 7,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "check_integration",
+   "check_integration",
+   "get_plan_limits",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Savoir si Brevaro prévoit des fonctions d'IA l'an prochain",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "La documentation ne dit rien de la feuille de route. Aucun engagement ne peut être donné sur l'évolution du produit. À confirmer auprès de l'éditeur. La documentation indique seulement que la rédaction d'e-mails assistée par IA n'est pas disponible aujourd'hui.",
+     "sources": [
+      "DOC-07"
+     ]
+    },
+    {
+     "besoin": "Compatibilité de Brevaro avec Odoo",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "Odoo n'apparaît pas dans la documentation de compatibilité. Il n'est ni confirmé ni exclu. À confirmer auprès de l'éditeur.",
+     "sources": []
+    },
+    {
+     "besoin": "Compatibilité de Brevaro avec Zoho",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "Zoho n'apparaît pas dans la documentation de compatibilité. Il n'est ni confirmé ni exclu. À confirmer auprès de l'éditeur.",
+     "sources": []
+    },
+    {
+     "besoin": "Prévisions de ventes par intelligence artificielle",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation dit qu'il n'y a pas de prévision générée par IA. Les prévisions sont calculées à partir des probabilités saisies par étape. Elles sont pondérées, mensuelles et trimestrielles, par commercial et pour l'équipe. Les objectifs de vente par commercial sont réservés aux offres Équipe et Entreprise. Il s'agit donc d'une alternative non-IA.",
+     "sources": [
+      "DOC-04"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Quel est le besoin principal : devis, pipeline, facturation ?",
+    "Combien de personnes utiliseraient Brevaro sur les 25 ? Les tarifs en dépendent : Essentiel 1 à 5 utilisateurs à 19 €, Équipe 3 à 50 utilisateurs à 39 € par utilisateur et par mois HT.",
+    "Odoo ou Zoho est-il à remplacer, ou doit-il rester connecté à Brevaro ? Si oui, pour quelles données ?"
+   ],
+   "esquisse_solution": "Brevaro propose des prévisions pondérées par les probabilités d'étape, sans IA. L'intégration avec Odoo et Zoho et toute évolution vers l'IA sont à confirmer auprès de l'éditeur. Il n'y a pas assez d'éléments pour recommander une offre.",
+   "risques": [
+    "Si l'IA prédictive est un critère de choix, Brevaro ne la propose pas aujourd'hui.",
+    "Une intégration Odoo ou Zoho non confirmée peut bloquer le projet si ces outils doivent rester en place.",
+    "Ne rien promettre sur la feuille de route."
+   ]
+  }
+ },
+ {
+  "id": "T25",
+  "json_valide": true,
+  "nb_appels_outils": 4,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Émettre des devis récurrents (abonnements mensuels)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "Un devis est ponctuel. Les devis récurrents et les abonnements ne sont pas gérés. Aucun contournement n'est indiqué dans la documentation consultée.",
+     "sources": [
+      "DOC-02"
+     ]
+    },
+    {
+     "besoin": "Facturation récurrente",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique « Facturation récurrente : non ». Brevaro ne propose qu'une facturation simple.",
+     "sources": [
+      "DOC-06"
+     ]
+    },
+    {
+     "besoin": "Prélèvement SEPA automatique",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique « Prélèvement SEPA : non ». Seul un lien de paiement par carte bancaire existe, via un prestataire partenaire, sur les offres Équipe et Entreprise. Ce n'est pas un prélèvement SEPA.",
+     "sources": [
+      "DOC-06"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": "Aucune offre ne couvre les trois besoins exprimés, donc pas de recommandation. À titre indicatif, pour 35 utilisateurs, seules les offres Équipe (3 à 50 utilisateurs) et Entreprise (à partir de 20) conviennent, l'offre Essentiel étant limitée à 5. Équipe : 35 × 39 € = 1 365 € HT par mois, avec engagement annuel. Entreprise est sur devis.",
+   "questions_clarification": [
+    "Les abonnements et leur facturation peuvent-ils rester gérés dans un outil dédié, Brevaro servant uniquement au pipeline et aux devis ponctuels ?",
+    "Quel outil de facturation ou de paiement utilisez-vous aujourd'hui pour les abonnements et le SEPA ?",
+    "Quels autres besoins avez-vous (pipeline, contacts, relances) ?"
+   ],
+   "esquisse_solution": "Brevaro ne couvre aucun des trois besoins : devis récurrents, facturation récurrente et prélèvement SEPA. Il pourrait servir au suivi commercial et aux devis ponctuels, mais pas à la gestion des abonnements. Si le client veut un outil de facturation d'abonnements, il faut l'en informer clairement. Un éventuel lien avec un outil tiers n'a pas été vérifié et reste à confirmer.",
+   "risques": [
+    "Le cœur du besoin (abonnements récurrents et SEPA) n'est pas couvert : risque d'inadéquation du produit.",
+    "Le lien de paiement par carte ne remplace pas le prélèvement SEPA.",
+    "Un outil tiers serait nécessaire pour les abonnements, avec un double coût et une double saisie."
+   ]
+  }
+ },
+ {
+  "id": "T26",
+  "json_valide": true,
+  "nb_appels_outils": 4,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "search_docs",
+   "get_plan_limits"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Engagement de disponibilité contractuel de 99,5 %",
+     "statut": "partiel",
+     "offre_minimale": "Entreprise",
+     "explication": "La documentation donne un objectif de disponibilité de 99,5 % pour toutes les offres. L'engagement contractuel (SLA) de 99,5 % avec crédits de service n'existe que dans l'offre Entreprise. Les offres Essentiel et Équipe n'ont pas de SLA.",
+     "sources": [
+      "DOC-14"
+     ]
+    },
+    {
+     "besoin": "Support téléphonique 24 h sur 24 et 7 jours sur 7",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation dit que le support par téléphone n'est pas fourni et que le support 24 h sur 24, 7 jours sur 7 ne l'est pas non plus. L'offre Entreprise donne un gestionnaire de compte dédié, avec une réponse sous 4 heures ouvrées pour les incidents critiques. L'offre Équipe donne un support par e-mail et chat, de 9 h à 18 h (heure de Paris) les jours ouvrés. L'offre Essentiel donne un support par e-mail uniquement.",
+     "sources": [
+      "DOC-14",
+      "DOC-12"
+     ]
+    },
+    {
+     "besoin": "Objectifs de reprise après sinistre (RTO et RPO) chiffrés",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "La documentation ne donne aucun RTO ni RPO, et ne décrit pas de plan de reprise après sinistre. Elle indique seulement des sauvegardes quotidiennes conservées 30 jours. La restauration se fait sur demande auprès du support et n'est pas en libre-service. Un RPO de 24 h ne peut pas en être déduit : il faut le faire confirmer par l'éditeur.",
+     "sources": [
+      "DOC-10"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Combien d'utilisateurs seront concernés ? L'offre Entreprise demande au moins 20 utilisateurs et est vendue sur devis.",
+    "Les trois exigences (SLA, support 24 h sur 24 et 7 jours sur 7 par téléphone, RTO/RPO) sont-elles éliminatoires dans l'appel d'offres ?",
+    "Quelles valeurs de RTO et de RPO sont exigées ?",
+    "Un support en heures ouvrées avec un gestionnaire dédié serait-il acceptable à la place d'un support 24 h sur 24 et 7 jours sur 7 ?"
+   ],
+   "esquisse_solution": "Seule l'offre Entreprise peut répondre à l'exigence de SLA contractuel de 99,5 % avec crédits de service. Le support téléphonique 24 h sur 24 et 7 jours sur 7 n'est pas proposé. Brevaro ne peut donc pas y répondre, et la documentation ne cite aucune solution de contournement. Les RTO et RPO chiffrés ne figurent pas dans la documentation. L'avant-vente doit les faire confirmer par l'éditeur avant de répondre. L'offre n'est pas recommandée tant que le nombre d'utilisateurs et le caractère éliminatoire des exigences ne sont pas connus.",
+   "risques": [
+    "Deux exigences sur trois ne sont pas couvertes : le support 24 h sur 24 et 7 jours sur 7 par téléphone est exclu, et les RTO/RPO ne sont pas documentés. Cela peut être éliminatoire dans l'appel d'offres.",
+    "Le SLA n'existe qu'avec l'offre Entreprise, qui est vendue sur devis à partir de 20 utilisateurs.",
+    "Il ne faut pas présenter l'objectif de 99,5 % des offres Essentiel et Équipe comme un engagement contractuel.",
+    "La restauration des sauvegardes passe par le support, sans délai documenté."
+   ]
+  }
+ },
+ {
+  "id": "T27",
+  "json_valide": true,
+  "nb_appels_outils": 0,
+  "outils": [],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Quelle est la taille de votre équipe commerciale (nombre d'utilisateurs) ?",
+    "Que souhaitez-vous améliorer concrètement : création de devis, suivi des opportunités, relances, signature électronique, facturation ?",
+    "Quel volume de devis ou de clients gérez-vous par mois ?",
+    "Quels outils utilisez-vous aujourd'hui (CRM, messagerie, logiciel comptable, tableur) et faut-il les connecter à Brevaro ou y reprendre vos données ?",
+    "Avez-vous des contraintes particulières (niveau de support, accès via API, validation interne des devis) ?"
+   ],
+   "esquisse_solution": "Le brief est trop vague pour recommander une offre ou un prix. Brevaro est un logiciel de devis et de suivi commercial pour PME. Pour savoir quelles fonctions et quelle offre (Essentiel, Équipe ou Entreprise) conviennent, il faut d'abord préciser les besoins, la taille de l'équipe et les outils existants. Je n'ai pas consulté la documentation à ce stade.",
+   "risques": [
+    "Sans précision sur le nombre d'utilisateurs, impossible de vérifier la limite de 5 utilisateurs de l'offre Essentiel.",
+    "Risque de proposer une offre inadaptée si les besoins réels (intégrations, API, signature) ne sont pas clarifiés."
+   ]
+  }
+ },
+ {
+  "id": "T28",
+  "json_valide": true,
+  "nb_appels_outils": 1,
+  "outils": [
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Remplacer le CRM actuel par Brevaro (CRM non précisé, fonctions attendues non précisées)",
+     "statut": "non_documente",
+     "offre_minimale": null,
+     "explication": "La documentation présente Brevaro comme un logiciel de devis et de suivi commercial pour les PME de 5 à 100 salariés, et non comme un CRM complet. Elle décrit des pipelines d'opportunités (1 en Essentiel, 3 en Équipe, 10 en Entreprise, jusqu'à 12 étapes personnalisables par pipeline), des tâches et rappels, et des prévisions pondérées. Elle ne dit rien sur le remplacement d'un CRM en général. Pour la migration, seuls HubSpot et Pipedrive sont documentés, par import CSV guidé ponctuel, sans synchronisation continue. Le CRM actuel du client et les fonctions qu'il utilise ne sont pas connus, donc je ne peux pas conclure.",
+     "sources": [
+      "DOC-01",
+      "DOC-04",
+      "DOC-08"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Quel CRM utilisez-vous aujourd'hui ? Cela permet de vérifier si une migration est documentée (HubSpot et Pipedrive : import CSV ponctuel).",
+    "Qu'est-ce qui ne vous convient plus dans ce CRM (fonctions manquantes, prix, complexité, intégrations) ?",
+    "Quelles fonctions utilisez-vous au quotidien : pipeline, devis, relances, rapports, gestion des contacts, marketing, support client ?",
+    "Combien d'utilisateurs auront besoin de Brevaro ?",
+    "Combien de pipelines et quel volume de données (contacts, opportunités) faut-il reprendre ?",
+    "Avec quels outils le CRM doit-il être connecté (messagerie, comptabilité, autres) ?"
+   ],
+   "esquisse_solution": "Brevaro peut couvrir le suivi commercial (pipeline, tâches, prévisions) et les devis. La documentation ne permet pas de dire s'il remplace un CRM complet. Il reste à identifier le CRM actuel, les fonctions indispensables, le nombre d'utilisateurs et les intégrations nécessaires. Ensuite, il faudra comparer ces points aux offres et aux limites documentées.",
+   "risques": [
+    "Brevaro est positionné sur les devis et le suivi commercial. Il peut ne pas couvrir toutes les fonctions d'un CRM complet, ce qui est à confirmer après le recueil des besoins.",
+    "Si le CRM actuel n'est ni HubSpot ni Pipedrive, la reprise des données n'est pas documentée.",
+    "Pour HubSpot ou Pipedrive, l'import est ponctuel, sans synchronisation continue : il faudrait basculer d'un seul coup."
+   ]
+  }
+ },
+ {
+  "id": "T29",
+  "json_valide": true,
+  "nb_appels_outils": 4,
+  "outils": [
+   "search_docs",
+   "search_docs",
+   "get_plan_limits",
+   "search_docs"
+  ],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [
+    {
+     "besoin": "Intelligence artificielle dans la prospection (par exemple rédaction d'e-mails assistée par IA)",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "La documentation indique que la rédaction d'e-mails assistée par IA n'est pas disponible. Elle précise aussi qu'il n'y a pas de prévision générée par IA : les prévisions reposent sur les probabilités saisies par les utilisateurs. Aucune autre fonction d'IA n'est documentée. Le brief ne dit pas quel usage de l'IA le client attend.",
+     "sources": [
+      "DOC-07",
+      "DOC-04"
+     ]
+    },
+    {
+     "besoin": "Envoi automatisé d'e-mails de prospection en masse à une liste de contacts",
+     "statut": "non_couvert",
+     "offre_minimale": null,
+     "explication": "L'envoi d'e-mails en masse (marketing automation) ne fait pas partie de Brevaro. Le brief ne mentionne pas ce besoin explicitement. Je le signale parce que « prospection automatisée » y mène souvent. À valider avec le client.",
+     "sources": [
+      "DOC-01",
+      "DOC-07"
+     ]
+    },
+    {
+     "besoin": "Automatisation des tâches commerciales (relances, suivi)",
+     "statut": "couvert",
+     "offre_minimale": null,
+     "explication": "Brevaro propose des automatisations de relance. Le nombre d'automatisations actives dépend de l'offre : 5 pour Essentiel, 25 pour Équipe, illimité pour Entreprise. Le détail de ce que ces automatisations peuvent déclencher n'a pas été vérifié. Le pipeline propose aussi des tâches et des rappels, et une attribution automatique des opportunités entre commerciaux (réservée aux offres Équipe et Entreprise).",
+     "sources": [
+      "DOC-01",
+      "DOC-07",
+      "DOC-12",
+      "DOC-04"
+     ]
+    }
+   ],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Quel usage de l'IA attendez-vous : rédaction de messages, qualification ou scoring de prospects, prévisions, autre ?",
+    "Quelles actions de prospection voulez-vous automatiser : envoi d'e-mails en masse, séquences de relance, création de tâches, attribution des prospects ?",
+    "Combien d'utilisateurs commerciaux seront concernés ?",
+    "Quel volume de prospects ou de contacts traitez-vous ?",
+    "Utilisez-vous déjà des outils de prospection ou de marketing automation à connecter à Brevaro, par exemple via Zapier ou Make ?"
+   ],
+   "esquisse_solution": "Brevaro peut servir de CRM et d'outil de suivi : contacts, pipeline, devis, tâches et automatisations de relance. Il n'offre ni fonction d'IA ni envoi d'e-mails en masse. Si le client attend de l'IA générative ou de la prospection de masse, il faudra un outil complémentaire. Le brief est trop vague pour recommander une offre ou un prix. Les automatisations exactes disponibles et les connexions possibles avec des outils tiers restent à confirmer une fois les besoins précisés.",
+   "risques": [
+    "Écart d'attentes : le client espère de l'IA, et la documentation indique qu'elle n'est pas disponible.",
+    "La prospection de masse par e-mail n'est pas couverte par Brevaro.",
+    "Le quota d'automatisations actives (5 en Essentiel) peut être limitant selon le nombre de scénarios voulus."
+   ]
+  }
+ },
+ {
+  "id": "T30",
+  "json_valide": true,
+  "nb_appels_outils": 0,
+  "outils": [],
+  "limite_atteinte": false,
+  "fiche": {
+   "besoins": [],
+   "offre_recommandee": null,
+   "calcul_prix": null,
+   "questions_clarification": [
+    "Combien d'utilisateurs auront besoin d'accéder à Brevaro ?",
+    "Quelles fonctions sont indispensables (par exemple devis, signature électronique, facturation électronique, API, support dédié) ?",
+    "Utilisez-vous des outils tiers à connecter (CRM, messagerie, logiciel comptable) ?",
+    "Quels volumes mensuels prévoyez-vous (nombre de devis, de documents, d'appels API) ?",
+    "Avez-vous des données existantes à migrer depuis un autre outil ?"
+   ],
+   "esquisse_solution": "Le brief ne donne ni nombre d'utilisateurs, ni besoins fonctionnels, ni volumes. Il est donc impossible de recommander une offre ou de calculer un prix. Une fois ces informations obtenues, on pourra comparer les offres Essentiel, Équipe et Entreprise et chiffrer le coût.",
+   "risques": [
+    "Brief trop vague : toute indication de prix serait une hypothèse non fondée.",
+    "L'offre Essentiel est limitée en nombre d'utilisateurs. L'effectif du client est donc déterminant pour le choix de l'offre."
+   ]
+  }
+ }
+]
