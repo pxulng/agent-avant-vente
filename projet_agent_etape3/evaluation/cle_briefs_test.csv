@@ -1,0 +1,96 @@
+brief_id;categorie;feature_id;statut_attendu;offre_ou_condition;reponse_attendue;erreur_grave_a_surveiller
+T01;couvert;F01;couvert;;Oui : devis créés depuis le catalogue (DOC-02, DOC-03).;
+T01;couvert;F03;couvert;;Oui : lignes optionnelles que le client coche ou décoche (DOC-02).;
+T01;couvert;F28;couvert;;Oui : un devis accepté se transforme en facture en un clic (DOC-06).;
+T01;couvert;F29;couvert;;Oui : facturation partielle par acompte ou jalon (DOC-06).;
+T02;couvert;F40;couvert;;Oui : synchronisation Gmail dans les deux sens (DOC-08).;
+T02;couvert;F41;couvert;;Oui : notifications Slack, dont devis accepté (DOC-08).;
+T02;couvert;F36;couvert;;Oui : automatisation linéaire avec déclencheur devis envoyé/ouvert/expiré et délai d'attente (DOC-07).;
+T03;couvert;F09;couvert;;Oui : devis en espagnol (DOC-02).;
+T03;couvert;F12;couvert;;Oui : EUR, USD, GBP (DOC-03).;
+T03;couvert;F19;couvert;;Oui : import CSV jusqu'à 5 000 références (DOC-03).;
+T04;couvert;F04;couvert;;Oui : jusqu'à 20 versions conservées (DOC-02).;
+T04;couvert;F02;couvert;;Oui : remises par ligne et globales (DOC-02).;
+T04;couvert;F51;couvert;;"Hébergement dans l'Union européenne ; le pays ou la région ne se choisit pas (DOC-10).";Affirmer un hébergement en France.
+T04;couvert;F60;couvert;;Oui : double authentification sur toutes les offres (DOC-10).;
+T05;couvert;F27;couvert;;Oui : import CSV/Excel avec détection des doublons et fusion manuelle (DOC-05).;
+T05;couvert;F30;couvert;;Oui : génération au format Factur-X (DOC-06).;
+T05;couvert;F28;couvert;;Oui : devis accepté transformé en facture (DOC-06).;
+T06;couvert;F68;couvert;;Oui : applications iOS et Android, tablette comprise, avec création et envoi de devis (DOC-15).;
+T06;couvert;F53;couvert;;Oui : chiffrement en transit (TLS 1.2+) et au repos (AES-256) (DOC-10).;
+T06;couvert;F66;couvert;;Oui : pack d'accompagnement de 2 jours, 2 400 € HT, toutes offres (DOC-13).;
+T07;couvert;F40;couvert;;Oui : synchronisation Outlook et Calendrier dans les deux sens (DOC-08).;
+T07;couvert;F04;couvert;;Oui : jusqu'à 20 versions, donc 15 passe (DOC-02).;Ne pas citer la limite de 20 versions.
+T07;couvert;F29;couvert;;Oui : facturation partielle par acomptes et jalons (DOC-06).;
+T08;couvert;F02;couvert;;Oui : remises en % ou en montant, par ligne et globales (DOC-02).;
+T08;couvert;F12;couvert;;Oui : GBP et EUR, taux de change saisis manuellement (DOC-03).;
+T08;couvert;F60;couvert;;Oui : toutes les offres (DOC-10).;
+T08;couvert;F51;couvert;;Oui : hébergement dans l'Union européenne (DOC-10).;
+T09;couvert;F27;couvert;;Oui : import avec détection des doublons (DOC-05).;
+T09;couvert;F40;couvert;;Oui : Gmail et Google Agenda (DOC-08).;
+T09;couvert;F41;couvert;;Oui : notifications Slack, nouvelle opportunité comprise (DOC-08).;
+T09;couvert;F36;couvert;;Oui : déclencheur « devis expiré » (DOC-07).;
+T10;couvert;F01;couvert;;Oui : devis depuis le catalogue (DOC-02, DOC-03).;
+T10;couvert;F30;couvert;;Oui : Factur-X (DOC-06).;
+T10;couvert;F68;couvert;;Oui : iOS et Android (DOC-15).;
+T10;couvert;F66;couvert;;"Oui : pack de 2 jours, 2 400 € HT (DOC-13) ; webinaires collectifs gratuits chaque semaine.";
+T11;partiel;F05;partiel;Équipe ou Entreprise;"Signature électronique simple : pas sur Essentiel ; offre Équipe au minimum (DOC-02, DOC-12).";Dire que l'offre Essentiel suffit.
+T11;partiel;F33;partiel;Équipe ou Entreprise;Lien de paiement par carte : Équipe ou Entreprise (DOC-06).;
+T11;partiel;N/A;partiel;Équipe;Équipe : 39 € HT par utilisateur et par mois, soit 4 × 39 = 156 € HT par mois, engagement annuel (1 872 € HT par an) (DOC-12).;Erreur de calcul.
+T12;partiel;F54;partiel;Entreprise;SSO SAML : offre Entreprise uniquement (DOC-10, DOC-12).;
+T12;partiel;F56;partiel;Entreprise;Journal d'audit conservé 12 mois : Entreprise uniquement (DOC-10).;
+T12;partiel;N/A;partiel;Entreprise;"Les 60 utilisateurs dépassent aussi le maximum de l'offre Équipe (50) ; Entreprise est sur devis (DOC-12).";
+T13;partiel;F47;partiel;Équipe ou Entreprise;Zapier et Make via API et webhooks : Équipe ou Entreprise (DOC-08).;
+T13;partiel;F48;partiel;Entreprise;"Équipe : 1 000 appels par jour, insuffisant pour 3 000 ; Entreprise : 20 000 appels par jour (DOC-09, DOC-12).";Dire que l'offre Équipe suffit.
+T13;partiel;N/A;non_documente;à vérifier;L'offre Entreprise commence à 20 utilisateurs et le client en a 15 : la documentation ne dit pas si c'est possible, à vérifier avec l'éditeur (DOC-12).;Affirmer sans réserve que Entreprise est possible.
+T14;partiel;F20;partiel;Équipe ou Entreprise;"3 pipelines : offre Équipe (3) ; Essentiel n'en a qu'un (DOC-04).";
+T14;partiel;F22;partiel;Équipe ou Entreprise;Attribution automatique à tour de rôle : Équipe ou Entreprise (DOC-04).;
+T14;partiel;F23;partiel;Équipe ou Entreprise;10 rapports personnalisés sur Équipe : 8 passe (DOC-04).;
+T14;partiel;N/A;partiel;Équipe;L'offre Équipe répond à tout le besoin (DOC-12).;
+T15;partiel;F46;partiel;migration ponctuelle seulement;"Import CSV guidé, une seule fois ; pas de synchronisation continue (DOC-08).";Promettre une synchronisation continue.
+T15;partiel;F67;partiel;Entreprise, sur devis;La migration assistée par Brevaro est réservée à l'offre Entreprise, qui commence à 20 utilisateurs : avec 12 personnes, non documenté, à vérifier (DOC-13, DOC-12).;Promettre une migration assistée sans réserve.
+T16;partiel;F34;partiel;Équipe ou Entreprise;Relances automatiques à 3 niveaux : Équipe ou Entreprise, pas Essentiel (DOC-06, DOC-12).;
+T16;partiel;N/A;non_documente;à vérifier;Équipe commence à 3 utilisateurs et le client en a 2 : la documentation ne dit pas si c'est possible, à vérifier avec l'éditeur (DOC-12).;Recommander Équipe sans signaler le minimum de 3 utilisateurs.
+T17;partiel;F69;partiel;lecture seule hors connexion;"Hors connexion : consultation des fiches récemment ouvertes seulement ; création et modification impossibles (DOC-15).";Affirmer que la création de devis hors connexion est possible.
+T17;partiel;F05;partiel;Équipe ou Entreprise;"Signature sur l'écran du client en rendez-vous : Équipe ou Entreprise ; son fonctionnement sans réseau n'est pas documenté, à vérifier (DOC-15).";
+T18;partiel;N/A;partiel;Équipe;"45 × 39 € = 1 755 € HT par mois, soit 21 060 € HT par an, engagement annuel ; 45 ≤ 50 utilisateurs (DOC-12).";Erreur de calcul.
+T18;partiel;F77;partiel;Entreprise;"Aucune remise publiée ; se discute dans le devis Entreprise, accessible à partir de 20 utilisateurs (DOC-12).";Promettre un pourcentage de remise.
+T19;hors_perimetre;F25;non_couvert;;Non : pas de hiérarchie de comptes (DOC-05).;Affirmer que c'est possible.
+T19;hors_perimetre;F24;non_couvert;;Non : pas d'enrichissement automatique des fiches (DOC-05).;Affirmer que c'est possible.
+T20;hors_perimetre;F31;non_couvert;;La transmission via une plateforme agréée n'est pas disponible à ce jour et la documentation ne donne aucune date (DOC-06).;Donner ou suggérer une date, ou dire qu'elle est prévue.
+T20;hors_perimetre;F30;couvert;;La génération au format Factur-X existe (DOC-06).;
+T21;hors_perimetre;F15;non_couvert;;Non : taxes à la vente américaines non gérées (DOC-03).;
+T21;hors_perimetre;F13;non_couvert;;Non : seulement EUR, USD, GBP (DOC-03).;
+T21;hors_perimetre;F10;non_couvert;;Non : devis en français, anglais, espagnol (DOC-02).;
+T21;hors_perimetre;F14;non_couvert;;Non : taux de change saisis manuellement (DOC-03).;
+T22;hors_perimetre;F72;non_documente;à vérifier;La documentation ne parle pas de l'hébergement de données de santé : à vérifier, ne pas conclure.;Dire non ou oui sans réserve.
+T22;hors_perimetre;F57;non_couvert;;Non : pas de certification ISO 27001 à ce jour (DOC-10).;
+T22;hors_perimetre;F52;non_couvert;;Non : hébergement dans l'UE, pays non choisissable (DOC-10).;Affirmer un hébergement en France.
+T22;hors_perimetre;F59;non_couvert;;Non : pas de qualification SecNumCloud (DOC-10).;
+T23;hors_perimetre;F44;non_couvert;;"Pas de connecteur SAP ; l'API peut être utilisée par un intégrateur (DOC-08, DOC-09).";Affirmer l'existence d'un connecteur.
+T23;hors_perimetre;F43;non_couvert;;"Pas de connecteur Salesforce ; API utilisable par un intégrateur (DOC-08, DOC-09).";Affirmer l'existence d'un connecteur.
+T23;hors_perimetre;F42;non_couvert;;Non : pas de notifications Teams (DOC-08).;
+T23;hors_perimetre;F45;non_couvert;;Non : export CSV des factures et paiements uniquement (DOC-06, DOC-08).;
+T24;hors_perimetre;F76;non_documente;à vérifier;Feuille de route non documentée : ne rien promettre.;Annoncer ou suggérer des fonctions à venir.
+T24;hors_perimetre;F75;non_documente;à vérifier;Odoo et Zoho n'apparaissent pas dans la documentation : à vérifier, ne pas conclure.;Dire oui ou non sans réserve.
+T24;hors_perimetre;F21;non_couvert;;Non : prévisions calculées à partir des probabilités saisies, pas d'IA (DOC-04).;Affirmer des prévisions par IA.
+T25;hors_perimetre;F11;non_couvert;;Non : devis ponctuels, pas d'abonnements (DOC-02).;
+T25;hors_perimetre;F35;non_couvert;;Non : pas de facturation récurrente (DOC-06).;
+T25;hors_perimetre;F32;non_couvert;;Non : pas de prélèvement SEPA (DOC-06).;
+T26;hors_perimetre;F64;partiel;Entreprise;SLA contractuel de 99,5 % avec crédits de service : offre Entreprise seulement (DOC-14).;
+T26;hors_perimetre;F63;non_couvert;;Non : pas de support 24 h sur 24, 7 jours sur 7 (DOC-14).;
+T26;hors_perimetre;F62;non_couvert;;Non : pas de support téléphonique (DOC-14).;
+T26;hors_perimetre;F73;non_documente;à vérifier;RTO et RPO non documentés : à vérifier, ne pas inventer de chiffres.;Donner des délais chiffrés.
+T27;vague;QUESTIONS;poser_questions;;Nombre d'utilisateurs / taille de l'équipe.;
+T27;vague;QUESTIONS;poser_questions;;Besoins prioritaires (devis, suivi des opportunités, facturation, relances, intégrations).;
+T27;vague;QUESTIONS;poser_questions;;Outil ou méthode actuels (Excel, autre CRM).;Recommander une offre ou chiffrer un prix total sans connaître le nombre d'utilisateurs.
+T28;vague;QUESTIONS;poser_questions;;"Quel CRM actuel (HubSpot et Pipedrive : migration ponctuelle par import ; Salesforce : aucun connecteur).";
+T28;vague;QUESTIONS;poser_questions;;Ce qui ne convient plus, et ce que l'équipe attend (devis, facturation, intégrations).;
+T28;vague;QUESTIONS;poser_questions;;Taille de l'équipe et volume de données à reprendre.;Répondre oui sans connaître le CRM ni les besoins.
+T29;vague;QUESTIONS;poser_questions;;Quels processus précis : relances, rédaction d'e-mails, prévisions, enrichissement de fiches.;
+T29;vague;F38;non_couvert;;Pas de rédaction d'e-mails assistée par IA (DOC-07).;
+T29;vague;F21;non_couvert;;Pas de prévisions par IA (DOC-04).;Promettre des fonctions d'IA.
+T29;vague;F36;couvert;;Des automatisations linéaires de relance existent (DOC-07).;
+T30;vague;QUESTIONS;poser_questions;;Nombre d'utilisateurs.;
+T30;vague;QUESTIONS;poser_questions;;Fonctions nécessaires (signature, API, SSO, relances) : elles déterminent l'offre.;
+T30;vague;N/A;couvert;;Peut donner les prix par utilisateur : Essentiel 19 €, Équipe 39 €, Entreprise sur devis, HT par mois, engagement annuel (DOC-12).;Donner un total ou choisir une offre sans connaître le nombre d'utilisateurs.

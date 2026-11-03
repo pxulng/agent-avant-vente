@@ -1,0 +1,81 @@
+id;fonctionnalite;statut;source;note
+F01;Création d'un devis à partir du catalogue;couvert;DOC-02;
+F02;Remises par ligne et globales;couvert;DOC-02;
+F03;Lignes optionnelles dans un devis;couvert;DOC-02;
+F04;Historique des versions d'un devis;couvert;DOC-02;20 versions conservées
+F05;Signature électronique simple;partiel;DOC-02, DOC-12;Équipe et Entreprise seulement, pas Essentiel
+F06;Signature électronique avancée ou qualifiée;non_couvert;DOC-02;
+F07;Validation de devis à plusieurs niveaux;non_couvert;DOC-02;
+F08;Validation de devis à une étape par un manager;partiel;DOC-02;Équipe et Entreprise
+F09;Devis en espagnol;couvert;DOC-02;
+F10;Devis en allemand;non_couvert;DOC-02;Seulement français, anglais, espagnol
+F11;Devis récurrents ou abonnements;non_couvert;DOC-02;
+F12;Devises EUR, USD, GBP;couvert;DOC-03;
+F13;Autres devises (CHF, JPY);non_couvert;DOC-03;
+F14;Taux de change mis à jour automatiquement;non_couvert;DOC-03;Saisie manuelle
+F15;Taxes à la vente américaines;non_couvert;DOC-03;
+F16;Gestion de stock;non_couvert;DOC-01, DOC-03;
+F17;Configurateur de produits avec règles de compatibilité (CPQ);non_couvert;DOC-03;
+F18;Grilles de prix par client ou segment;partiel;DOC-03;Équipe et Entreprise
+F19;Import CSV du catalogue;couvert;DOC-03;Jusqu'à 5 000 références
+F20;Plusieurs pipelines de vente;partiel;DOC-04, DOC-12;1, 3 ou 10 selon l'offre
+F21;Prévisions de ventes générées par IA;non_couvert;DOC-04;
+F22;Attribution automatique des opportunités;partiel;DOC-04;Équipe et Entreprise
+F23;Rapports personnalisés;partiel;DOC-04;0, 10 ou illimité selon l'offre
+F24;Enrichissement automatique des fiches contacts;non_couvert;DOC-05;
+F25;Hiérarchie de comptes (maison mère, filiales);non_couvert;DOC-05;
+F26;Enregistrement automatique des appels, téléphonie;non_couvert;DOC-05, DOC-08;
+F27;Import CSV avec détection des doublons;couvert;DOC-05;
+F28;Transformer un devis en facture;couvert;DOC-06;
+F29;Facturation partielle (acomptes, jalons);couvert;DOC-06;
+F30;Génération de factures au format Factur-X;couvert;DOC-06;
+F31;Transmission via une plateforme agréée de facture électronique;non_couvert;DOC-06;Non disponible à ce jour, aucune date donnée : ne pas promettre de date
+F32;Prélèvement SEPA;non_couvert;DOC-06;
+F33;Lien de paiement par carte;partiel;DOC-06;Équipe et Entreprise
+F34;Relances automatiques des impayés;partiel;DOC-06;Équipe et Entreprise
+F35;Facturation récurrente;non_couvert;DOC-06;
+F36;Automatisations linéaires de relance;couvert;DOC-07;
+F37;Automatisations avec branches si/sinon;non_couvert;DOC-07;
+F38;Rédaction d'e-mails assistée par IA;non_couvert;DOC-07;
+F39;Envoi d'e-mails en masse;non_couvert;DOC-01, DOC-07;
+F40;Synchronisation Gmail et Outlook;couvert;DOC-08;
+F41;Notifications Slack;couvert;DOC-08;
+F42;Notifications Microsoft Teams;non_couvert;DOC-08;
+F43;Connecteur Salesforce;non_couvert;DOC-08;API utilisable par un intégrateur
+F44;Connecteur SAP;non_couvert;DOC-08;API utilisable par un intégrateur
+F45;Connecteur natif avec un logiciel de comptabilité;non_couvert;DOC-06, DOC-08;Export CSV seulement
+F46;Migration depuis HubSpot ou Pipedrive;partiel;DOC-08;Import ponctuel, pas de synchronisation continue
+F47;Zapier et Make;partiel;DOC-08;Équipe et Entreprise
+F48;API REST;partiel;DOC-09;Pas d'accès sur Essentiel
+F49;SDK officiel;non_couvert;DOC-09;
+F50;API GraphQL;non_couvert;DOC-09;
+F51;Hébergement dans l'Union européenne;couvert;DOC-10;
+F52;Hébergement garanti en France;non_couvert;DOC-10;Région non choisissable
+F53;Chiffrement en transit et au repos;couvert;DOC-10;
+F54;Authentification unique SAML (SSO);partiel;DOC-10;Entreprise seulement
+F55;Provisionnement SCIM;non_couvert;DOC-10;
+F56;Journal d'audit;partiel;DOC-10;Entreprise seulement
+F57;Certification ISO 27001;non_couvert;DOC-10;
+F58;Certification SOC 2;non_couvert;DOC-10;
+F59;Qualification SecNumCloud;non_couvert;DOC-10;
+F60;Double authentification;couvert;DOC-10;Toutes les offres
+F61;Rôles personnalisés;non_couvert;DOC-11;
+F62;Support téléphonique;non_couvert;DOC-14;
+F63;Support 24 h sur 24, 7 jours sur 7;non_couvert;DOC-14;
+F64;SLA contractuel de disponibilité 99,5 %;partiel;DOC-14;Entreprise seulement
+F65;Installation sur site (on-premise);non_couvert;DOC-13;
+F66;Pack d'accompagnement de 2 jours;couvert;DOC-13;2 400 € HT
+F67;Migration de données assistée;partiel;DOC-13;Entreprise seulement, sur devis
+F68;Applications mobiles iOS et Android;couvert;DOC-15;
+F69;Mode hors connexion;partiel;DOC-15;Lecture seule seulement
+F70;Scan de cartes de visite;non_couvert;DOC-15;
+F71;Accessibilité (RGAA);non_documente;;La documentation n'en parle pas : répondre « à vérifier »
+F72;Hébergement de données de santé (HDS);non_documente;;
+F73;Délais de reprise après sinistre (RTO, RPO);non_documente;;
+F74;Nombre maximal de contacts;non_documente;DOC-12;La documentation ne donne pas de limite, ce n'est pas une garantie d'illimité
+F75;Compatibilité avec Odoo ou Zoho;non_documente;;
+F76;Feuille de route produit (fonctions à venir);non_documente;;Ne rien promettre
+F77;Remise sur volume;partiel;DOC-12;Aucune remise publiée, négociable en Entreprise
+F78;Références clients et études de cas;non_documente;;
+F79;Temps de réponse et performance de l'API;non_documente;;
+F80;Taille maximale des fichiers joints;non_documente;;
