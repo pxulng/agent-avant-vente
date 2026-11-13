@@ -53,13 +53,12 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "cachedResultName": "claude-haiku-5-5",
-          "mode": "list",
-          "value": "claude-haiku-5-5"
+          "mode": "id",
+          "value": "claude-sonnet-5-5"
         },
         "options": {
           "maxTokensToSample": 16000,
-          "thinkingMode": "disabled"
+          "thinkingMode": "adaptive"
         }
       }
     },
